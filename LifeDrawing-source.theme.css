@@ -1,1 +1,17 @@
-/* Source file */
+/* === Life Drawing Source Theme === */
+.theme-dark {
+  --dplus-backdrop: url("https://i.imgur.com/5jWGPTg.png");
+  --dplus-background-color-hue: 50;
+  --dplus-background-color-saturation-amount: 0.5;
+  --dplus-background-color-lightness-amount: 0.8;
+  --dplus-background-color-alpha: 0.85;
+
+  --dplus-accent-color-hue: 85;
+  --dplus-accent-color-saturation: 38%;
+  --dplus-accent-color-lightness: 45%;
+}
+
+/* optional: light theme */
+.theme-light {
+  --dplus-backdrop: url("https://i.imgur.com/5jWGPTg.png");
+}

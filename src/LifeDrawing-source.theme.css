@@ -1,165 +1,114 @@
 /**
- * @name LifeDrawing Theme (Editable Template)
- * @author Savvyyy
- * @version 1.2
- * @description A painterly, natural BetterDiscord theme base for customization.
- * @website https://savvyyybbb.github.io/Life_Drawing_Discord_Theme/
- * @source https://github.com/savvyyybbb/Life_Drawing_Discord_Theme
+ * @name LifeDrawing Theme — Layout Map Edition
+ * @description Dark, modular BetterDiscord theme with labeled sections.
+ * Each section uses unique colors and includes example image-backdrop code.
  */
 
 /* ============================================================
-   🪴 SECTION 1 — BASIC COLORS & STYLE SETTINGS
+   🪴 SECTION 1 — CORE VARIABLES
    ============================================================ */
-/* 🟢 You can change the colors, fonts, and image here safely.
-   Everything below this section automatically updates the rest. */
 
 :root {
-  /* 🌿 Main Palette */
-  --life-bg-color: #f4f1ea;          /* Main background color */
-  --life-accent: #b7c8b5;            /* Accent color (used in highlights) */
-  --life-accent-strong: #9cb17f;     /* Strong accent color */
-  --life-text-color: #3f3a35;        /* Main text color */
-  --life-muted-text: #7a766d;        /* Subtle text, timestamps, etc. */
+  /* --- Overall mood: darker base so blocks stand apart --- */
+  --life-bg-color: #1e201f;
+  --life-accent: #465f46;
+  --life-accent-strong: #5b7b5a;
+  --life-text-color: #e5e3dc;
+  --life-muted-text: #aaa59a;
 
-  /* 🌸 Background Image (optional) */
-  --life-background: url("https://your-image-url-here.png"); /* Replace with your own image */
-  --life-background-blur: 8px;        /* Blur intensity (0–20px) */
-  --life-background-brightness: 1;    /* Brightness multiplier (0.8–1.2) */
-  --life-background-saturation: 1.05; /* Color saturation multiplier */
+  --life-scrollbar: rgba(100, 120, 100, 0.6);
 
-  /* 🪵 Scrollbars */
-  --life-scrollbar: rgba(120, 140, 120, 0.6);
-
-  /* ✍️ Fonts */
   --life-font-primary: "Nunito", "Segoe UI", sans-serif;
   --life-font-heading: "Poppins", "Nunito", sans-serif;
 }
 
 /* ============================================================
-   ☀️ SECTION 2 — LIGHT & DARK MODE COLOR MAPPING
+   ☀️ SECTION 2 — THEME VARIABLE MAPPING
    ============================================================ */
-/* 🟡 These map your custom colors to Discord’s modern variables.
-   Edit them if you want to tweak per-mode behavior. */
 
-.theme-light, :root.theme-light {
-  --background-primary: rgba(255, 255, 255, 0.4) !important;
-  --background-secondary: rgba(248, 244, 230, 0.5) !important;
-  --background-tertiary: rgba(231, 224, 198, 0.6) !important;
-  --background-floating: rgba(239, 237, 228, 0.5) !important;
+.theme-dark, :root.theme-dark {
+  --background-primary: #252825 !important;
+  --background-secondary: #202320 !important;
+  --background-tertiary: #191b19 !important;
+  --background-floating: #2c2f2b !important;
   --background-accent: var(--life-accent) !important;
 
   --text-normal: var(--life-text-color) !important;
   --text-muted: var(--life-muted-text) !important;
-  --header-primary: var(--life-text-color) !important;
-  --header-secondary: var(--life-muted-text) !important;
-}
-
-.theme-dark, :root.theme-dark {
-  --background-primary: rgba(36, 38, 35, 0.5) !important;
-  --background-secondary: rgba(28, 30, 28, 0.5) !important;
-  --background-tertiary: rgba(22, 23, 22, 0.4) !important;
-  --background-floating: rgba(30, 33, 30, 0.6) !important;
-  --background-accent: #7b9b7b !important;
-
-  --text-normal: #e7e5df !important;
-  --text-muted: #a9a497 !important;
-  --header-primary: #f3f1eb !important;
-  --header-secondary: #bdb8aa !important;
 }
 
 /* ============================================================
-   🖼️ SECTION 3 — APP BACKGROUND & TRANSPARENCY
+   🌄 SECTION 3 — GLOBAL BACKGROUND
    ============================================================ */
-/* 💡 This section controls the background image, blur, and overlay color.
-   It’s safe to experiment with these values. */
 
 #app-mount {
-  background: var(--life-bg-color) var(--life-background) center/cover no-repeat fixed !important;
-  filter: brightness(var(--life-background-brightness)) saturate(var(--life-background-saturation));
-}
-
-/* Make Discord’s inner layers transparent so your image shows through */
-.appMount__51fd7,
-.app__160d8,
-#app-mount .bg__960e4 {
-  background-color: transparent !important;
-}
-
-/* Transparency Mode Override */
-.bd-transparency,
-.bd-transparency #app-mount {
-  background: transparent !important;
+  background: var(--life-bg-color) url("https://your-global-bg.png") center/cover no-repeat fixed !important;
+  /* draw full-screen background: ~16:9 aspect ratio */
 }
 
 /* ============================================================
-   🧱 SECTION 4 — LAYOUT BLOCK COLORS
-   ============================================================ */
-/* 💬 Each section below represents a major part of Discord.
-   Change the color variables above to affect all of these automatically. */
-
-#app-mount.theme-dark [class*="guilds"],
-#app-mount.theme-light [class*="guilds"] {
-  background: var(--life-accent) !important; /* Server list */
-}
-
-#app-mount.theme-dark [class*="sidebar"],
-#app-mount.theme-light [class*="sidebar"] {
-  background: var(--background-secondary) !important; /* Channel list */
-}
-
-#app-mount.theme-dark [class*="chatContent"],
-#app-mount.theme-light [class*="chatContent"] {
-  background: var(--background-primary) !important; /* Chat area */
-}
-
-#app-mount.theme-dark [class*="membersWrap"],
-#app-mount.theme-light [class*="membersWrap"] {
-  background: var(--background-floating) !important; /* Member list */
-}
-
-#app-mount.theme-dark [class*="title"],
-#app-mount.theme-light [class*="title"] {
-  background: var(--background-tertiary) !important; /* Header bar */
-}
-
-/* ============================================================
-   💬 SECTION 5 — TEXT & LINKS
+   🧱 SECTION 4 — LAYOUT PANELS
    ============================================================ */
 
-.messageContent {
-  color: var(--text-normal);
-  font-family: var(--life-font-primary);
+/* --- 4.1 SERVER LIST (far left) ---
+   Approx. aspect ratio: very tall, ~1 : 2.3
+   Suggested art size: 150 × 350 px tileable texture */
+#app-mount [class*="guilds_"],
+#app-mount [class*="guilds"] {
+  background: #2e2f28 url("https://example.com/serverlist-bg.png") center/cover no-repeat !important;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: var(--life-font-heading);
-  color: var(--header-primary);
+/* --- 4.2 CHANNEL SIDEBAR ---
+   Ratio: tall, ~1 : 1.8
+   Suggested art size: 280 × 500 px */
+#app-mount [class*="sidebar_"],
+#app-mount [class*="sidebar"] {
+  background: #222420 url("https://example.com/sidebar-bg.png") center/cover no-repeat !important;
 }
 
-/* Mentions */
-[class*="mentioned"] {
-  background-color: rgba(156, 177, 127, 0.2);
-  border-left: 3px solid var(--life-accent);
-  border-radius: 5px;
-  padding-left: 5px;
+/* --- 4.3 CHAT AREA ---
+   Ratio: wide, ~16 : 9 for typical 1080p window
+   Suggested art size: 1600 × 900 px */
+#app-mount [class*="chatContent_"],
+#app-mount [class*="chatContent"] {
+  background: #252825 url("https://example.com/chat-bg.png") center/cover no-repeat !important;
 }
 
-/* Links */
-a {
-  color: var(--background-accent);
-  transition: 0.2s ease;
-}
-a:hover {
-  color: var(--header-primary);
-  text-decoration: underline;
+/* --- 4.4 MEMBER LIST (right side) ---
+   Ratio: tall, ~1 : 2
+   Suggested art size: 260 × 500 px */
+#app-mount [class*="membersWrap_"],
+#app-mount [class*="membersWrap"] {
+  background: #1b1d1a url("https://example.com/members-bg.png") center/cover no-repeat !important;
 }
 
-/* ============================================================
-   🪵 SECTION 6 — SCROLLBARS
-   ============================================================ */
+/* --- 4.5 TITLE / HEADER BAR ---
+   Ratio: wide strip, ~8 : 1
+   Suggested art size: 1600 × 200 px */
+#app-mount [class*="title_"],
+#app-mount [class*="title"] {
+  background: #33352f url("https://example.com/header-bg.png") center/cover no-repeat !important;
+}
 
+/* --- 4.6 ACTIVITY / STATUS PANE (Home > Activity) ---
+   Ratio: squareish, ~1 : 1
+   Suggested art size: 500 × 500 px */
+#app-mount [class*="activityPanel_"],
+#app-mount [class*="activityPanel"] {
+  background: #2d302a url("https://example.com/activity-bg.png") center/cover no-repeat !important;
+}
+
+/* --- 4.7 MESSAGE INPUT BOX ---
+   Ratio: full-width strip, ~6 : 1
+   Suggested art size: 1200 × 200 px */
+#app-mount [class*="channelTextArea_"],
+#app-mount [class*="channelTextArea"] {
+  background: #191b18 url("https://example.com/messagebox-bg.png") center/cover no-repeat !important;
+}
+
+/* --- 4.8 SCROLLBAR AREA (applies to all scroll containers) --- */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--life-scrollbar);
@@ -167,12 +116,35 @@ a:hover {
 }
 
 /* ============================================================
-   🔧 SECTION 7 — OPTIONAL DEBUG MODE
+   💬 SECTION 5 — TEXT, LINKS, AND MENTIONS
    ============================================================ */
-/* Turn on borders to see where every block starts/ends.
-   Open console (Ctrl+Shift+I) → Console tab → paste:
-     document.documentElement.classList.toggle("debug") */
 
+.messageContent {
+  color: var(--text-normal);
+  font-family: var(--life-font-primary);
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--life-font-heading);
+  color: var(--life-text-color);
+}
+[class*="mentioned"] {
+  background-color: rgba(91, 123, 90, 0.25);
+  border-left: 3px solid var(--life-accent);
+  border-radius: 5px;
+  padding-left: 5px;
+}
+a {
+  color: var(--life-accent-strong);
+  transition: 0.2s ease;
+}
+a:hover {
+  color: var(--text-normal);
+  text-decoration: underline;
+}
+
+/* ============================================================
+   🔧 SECTION 6 — DEBUG OVERLAY
+   ============================================================ */
 :root.debug * {
-  outline: 1px dashed rgba(0, 0, 0, 0.2);
+  outline: 1px dashed rgba(255, 255, 255, 0.2);
 }

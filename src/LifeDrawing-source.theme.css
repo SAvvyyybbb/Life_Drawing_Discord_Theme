@@ -4,7 +4,15 @@
  * @author SAvvyyybbb
  * @version 1.2
  */
-
+.theme-dark, 
+.theme-light, 
+#app-mount {
+  --background-primary: rgb(173, 164, 137) !important;
+  --background-secondary: rgb(173, 164, 137) !important;
+  --background-tertiary: rgb(173, 164, 137) !important;
+  --background-floating: rgba(173, 164, 137, 0.9) !important;
+  --background-accent: rgb(173, 164, 137) !important;
+}
 /* === 🌿 VARIABLES === */
 .theme-dark, .theme-light {
   --base-color: rgb(216, 204, 173);        /* parchment tan */
@@ -139,4 +147,13 @@ body::before {
   background: rgb(173, 164, 137) url("https://your-image-url.png") center/cover no-repeat fixed;
 }
 */
+.bg-1QIAus,
+.appMount-3lHmkl,
+.layers-OrUESM,
+.container-2cd8Mz {
+  background: rgb(173, 164, 137) !important;
+  background-color: rgb(173, 164, 137) !important;
+  opacity: 1 !important;
+}
+
 

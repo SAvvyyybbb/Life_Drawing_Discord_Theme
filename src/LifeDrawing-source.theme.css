@@ -26,7 +26,7 @@
   --life-muted-text: #6e6b63;       /* stone gray */
 
   /* 🌸 Painterly Backdrop */
-  --life-background: url("https://your-image-url-here.png");
+  --life-background: url("https://i.imgur.com/4Dm8QdE.jpeg");
   --life-background-blur: 8px;
   --life-background-brightness: 0.95;
   --life-background-saturation: 1.05;
@@ -221,11 +221,34 @@ a:hover {
 }
 
 /* ============================================================
-   🌿 8. SMART CATCH-ALL BACKGROUND FIX
+   🌿 8. SMART FALLBACK (FINAL FIX)
    ============================================================ */
 /*
-This fallback only applies to small UI fragments that lack a defined background.
-It prevents black or white gaps without covering major areas.
+This only fills small interface fragments (like buttons, form fields,
+dividers) that don't already have a background.
+It leaves chat, sidebar, and major panels untouched.
 */
+
+#app-mount :is(button, input, textarea, .scrollableContainer__*, .divider*, .form*) {
+  background-color: var(--life-container-fallback) !important;
+  backdrop-filter: blur(2px);
+  border-radius: 6px;
+}
+
+/* Keep all major panels transparent */
+[class*="chat_"],
+[class*="sidebar_"],
+[class*="guilds_"],
+[class*="members_"],
+[class*="title_"],
+[class*="content_"],
+[class*="layer_"],
+[class*="container_"],
+#app-mount,
+.appMount__51fd7,
+.app__160d8,
+#app-mount .bg__960e4 {
+  background-color: transparent !important;
+}
 
 

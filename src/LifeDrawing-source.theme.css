@@ -62,34 +62,30 @@
   background: transparent !important;
 }
 
-/* ============================================================
-   🧭 3. MAIN LAYOUT COLORS
-   ============================================================ */
-
-.appMount-3lHmkl .guilds-2JjMmN {
+/* Server list */
+[class*="guilds"], [class*="guilds_"] {
   background: var(--life-accent) !important;
-  backdrop-filter: blur(var(--life-background-blur));
 }
 
-.appMount-3lHmkl .sidebar-1tnWFu {
+/* Sidebar */
+[class*="sidebar"], [class*="sidebar_"] {
   background: var(--life-sidebar-bg) !important;
-  backdrop-filter: blur(var(--life-background-blur));
 }
 
-.appMount-3lHmkl .chatContent-3KubbW,
-.appMount-3lHmkl .chat-2ZfjoI {
+/* Chat content */
+[class*="chatContent"], [class*="chatContent_"],
+[class*="chat"], [class*="chat_"] {
   background: var(--life-chat-bg) !important;
-  backdrop-filter: blur(var(--life-background-blur));
 }
 
-.appMount-3lHmkl .membersWrap-3NUR2t {
+/* Members list */
+[class*="membersWrap"], [class*="membersWrap_"] {
   background: var(--life-members-bg) !important;
-  backdrop-filter: blur(var(--life-background-blur));
 }
 
-.appMount-3lHmkl .title-31SJ6t {
+/* Title bar */
+[class*="title"], [class*="title_"] {
   background: var(--life-header-bg) !important;
-  backdrop-filter: blur(calc(var(--life-background-blur) / 2));
 }
 
 /* ============================================================

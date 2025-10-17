@@ -35,11 +35,11 @@ colors, backgrounds, fonts, and general brightness.
   --life-background-saturation: 1.05;  /* adjust color intensity of background */
 
   /* 🌄 Containers — major layout blocks */
-  --life-header-bg: rgba(231, 224, 198, 0.7); /* top bar where server name is */
-  --life-sidebar-bg: rgba(236, 232, 220, 0.7); /* server/channel sidebar */
-  --life-chat-bg: rgba(245, 242, 233, 0.7); /* chat area where messages appear */
-  --life-members-bg: rgba(232, 230, 223, 0.7); /* right-hand member list */
-  --life-container-fallback: rgba(230, 228, 220, 0.9); /* backup color for untouched areas */
+  --life-header-bg: rgba(231, 224, 198, 1); /* top bar where server name is */
+  --life-sidebar-bg: rgba(236, 232, 220, 1); /* server/channel sidebar */
+  --life-chat-bg: rgba(245, 242, 233, 1); /* chat area where messages appear */
+  --life-members-bg: rgba(232, 230, 223, 1); /* right-hand member list */
+  --life-container-fallback: rgba(230, 228, 220, 1); /* backup color for untouched areas */
 
   /* 🪵 Scrollbars */
   --life-scrollbar: rgba(130, 150, 130, 0.4); /* scrollbar thumb color */

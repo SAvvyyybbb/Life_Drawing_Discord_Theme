@@ -1,26 +1,25 @@
 /**
  * @name LifeDrawing Theme
  * @author Savvyyy
- * @version 1.0
- * @description A painterly, natural BetterDiscord theme template.
+ * @version 1.1
+ * @description A painterly, natural BetterDiscord theme template (light + dark compatible).
  * @website https://savvyyybbb.github.io/Life_Drawing_Discord_Theme/
  * @source https://github.com/savvyyybbb/Life_Drawing_Discord_Theme
- * @invite betterdiscord
  */
 
 /* ============================================================
-   🌱 1. VARIABLES
+   🌿 1. CORE VARIABLES
    ============================================================ */
 
 :root {
-  /* 🌿 Core Palette */
+  /* 🌸 Core Palette */
   --life-bg-color: #f4f1ea;
   --life-accent: #b7c8b5;
   --life-accent-strong: #9cb17f;
   --life-text-color: #3f3a35;
   --life-muted-text: #7a766d;
 
-  /* 🌸 Painterly Backdrop */
+  /* 🌿 Painterly Backdrop */
   --life-background: url("https://your-image-url-here.png");
   --life-background-blur: 8px;
   --life-background-brightness: 1;
@@ -41,7 +40,39 @@
 }
 
 /* ============================================================
-   🌄 2. BASE APP BACKGROUND
+   🌗 2. LIGHT / DARK MODE VARIABLES
+   ============================================================ */
+
+/* 🌞 Light Theme */
+.theme-light, :root.theme-light {
+  --background-primary: var(--life-chat-bg) !important;
+  --background-secondary: var(--life-sidebar-bg) !important;
+  --background-tertiary: var(--life-header-bg) !important;
+  --background-floating: var(--life-members-bg) !important;
+  --background-accent: var(--life-accent) !important;
+
+  --text-normal: var(--life-text-color) !important;
+  --text-muted: var(--life-muted-text) !important;
+  --header-primary: var(--life-text-color) !important;
+  --header-secondary: var(--life-muted-text) !important;
+}
+
+/* 🌚 Dark Theme */
+.theme-dark, :root.theme-dark {
+  --background-primary: rgba(36, 38, 35, 0.5) !important;
+  --background-secondary: rgba(28, 30, 28, 0.5) !important;
+  --background-tertiary: rgba(22, 23, 22, 0.4) !important;
+  --background-floating: rgba(30, 33, 30, 0.6) !important;
+  --background-accent: #7b9b7b !important;
+
+  --text-normal: #e7e5df !important;
+  --text-muted: #a9a497 !important;
+  --header-primary: #f3f1eb !important;
+  --header-secondary: #bdb8aa !important;
+}
+
+/* ============================================================
+   🌄 3. APP BACKGROUND AND TRANSPARENCY
    ============================================================ */
 
 #app-mount {
@@ -49,60 +80,65 @@
   filter: brightness(var(--life-background-brightness)) saturate(var(--life-background-saturation));
 }
 
-/* Make Discord’s layers transparent so our background shows */
 .appMount__51fd7,
 .app__160d8,
 #app-mount .bg__960e4 {
   background-color: transparent !important;
 }
 
-/* Transparency mode override */
 .bd-transparency,
 .bd-transparency #app-mount {
   background: transparent !important;
 }
 
-/* Server list */
-[class*="guilds"], [class*="guilds_"] {
+/* ============================================================
+   🧱 4. STRUCTURE BLOCKS (for visibility & debugging)
+   ============================================================ */
+
+#app-mount.theme-dark [class*="guilds"],
+#app-mount.theme-light [class*="guilds"],
+#app-mount [class*="guilds_"] {
   background: var(--life-accent) !important;
 }
 
-/* Sidebar */
-[class*="sidebar"], [class*="sidebar_"] {
+#app-mount.theme-dark [class*="sidebar"],
+#app-mount.theme-light [class*="sidebar"],
+#app-mount [class*="sidebar_"] {
   background: var(--life-sidebar-bg) !important;
 }
 
-/* Chat content */
-[class*="chatContent"], [class*="chatContent_"],
-[class*="chat"], [class*="chat_"] {
+#app-mount.theme-dark [class*="chatContent"],
+#app-mount.theme-light [class*="chatContent"],
+#app-mount [class*="chatContent_"] {
   background: var(--life-chat-bg) !important;
 }
 
-/* Members list */
-[class*="membersWrap"], [class*="membersWrap_"] {
+#app-mount.theme-dark [class*="membersWrap"],
+#app-mount.theme-light [class*="membersWrap"],
+#app-mount [class*="membersWrap_"] {
   background: var(--life-members-bg) !important;
 }
 
-/* Title bar */
-[class*="title"], [class*="title_"] {
+#app-mount.theme-dark [class*="title"],
+#app-mount.theme-light [class*="title"],
+#app-mount [class*="title_"] {
   background: var(--life-header-bg) !important;
 }
 
 /* ============================================================
-   💬 4. CHAT AND TEXT
+   💬 5. TEXT & LINKS
    ============================================================ */
 
 .messageContent {
-  color: var(--life-text-color);
+  color: var(--text-normal);
   font-family: var(--life-font-primary);
 }
 
 h1, h2, h3, h4, h5 {
   font-family: var(--life-font-heading);
-  color: var(--life-accent-strong);
+  color: var(--header-primary);
 }
 
-/* Mentions */
 [class*="mentioned"] {
   background-color: rgba(156, 177, 127, 0.2);
   border-left: 3px solid var(--life-accent);
@@ -110,18 +146,17 @@ h1, h2, h3, h4, h5 {
   padding-left: 5px;
 }
 
-/* Links */
 a {
-  color: var(--life-accent-strong);
+  color: var(--background-accent);
   transition: 0.2s ease;
 }
 a:hover {
-  color: var(--life-text-color);
+  color: var(--header-primary);
   text-decoration: underline;
 }
 
 /* ============================================================
-   🪵 5. SCROLLBARS
+   🪵 6. SCROLLBARS
    ============================================================ */
 
 ::-webkit-scrollbar {
@@ -133,9 +168,9 @@ a:hover {
 }
 
 /* ============================================================
-   ✨ 6. OPTIONAL DEBUG VIEW (toggle visibility)
+   🧭 7. DEBUG MODE
    ============================================================ */
 
-.debug-borders {
-  outline: 1px dashed rgba(0, 0, 0, 0.15);
+:root.debug * {
+  outline: 1px dashed rgba(0, 0, 0, 0.2);
 }

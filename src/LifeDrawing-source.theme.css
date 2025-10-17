@@ -229,6 +229,45 @@ body,
 }
 
 /* ============================================================
+   🪄 10.5 CONTENT & REGION FIX
+   Covers: Settings panels, chat inner content, popouts, etc.
+   ============================================================ */
+
+/* Core content containers */
+[class*="content_"],
+[class*="contentRegion_"],
+[class*="contentWrapper_"],
+[class*="contentArea_"],
+[class*="chatContent_"],
+[class*="page_"],
+[class*="container_"],
+[class*="layer_"] {
+  background-color: var(--life-container-bg) !important;
+  color: var(--life-text-color) !important;
+  backdrop-filter: blur(4px) brightness(0.95);
+  transition: background-color 0.3s ease;
+}
+
+/* Settings pages & modals (fixes black or white voids) */
+[class*="standardSidebarView_"],
+[class*="settings_"],
+[class*="contentColumn_"],
+[class*="contentRegionScroller_"] {
+  background-color: rgba(40, 42, 38, 0.9) !important;
+  backdrop-filter: blur(5px);
+  color: var(--life-text-color) !important;
+}
+
+/* Content inside modals and popouts */
+[class*="modal_"] [class*="content_"],
+[class*="popout_"] [class*="content_"] {
+  background-color: rgba(38, 41, 36, 0.95) !important;
+  border-radius: 10px;
+  border: 1px solid rgba(120, 130, 120, 0.3);
+}
+
+
+/* ============================================================
    🧱 11. GLOBAL COLOR FALLBACKS (ENSURES NO BLACK HOLES)
    ============================================================ */
 

@@ -1,67 +1,65 @@
 /**
  * @name Life Drawing Discord Theme
- * @description Painterly, cozy, sketchbook-inspired theme in warm greens and yellows.
+ * @description A painterly, warm BetterDiscord theme inspired by sketchbooks, parchment, and soft natural hues.
  * @author SAvvyyybbb
- * @version 1.1
+ * @version 1.0
+ * @source https://github.com/SAvvyyybbb/Life_Drawing_Discord_Theme
+ * @updateUrl https://raw.githubusercontent.com/SAvvyyybbb/Life_Drawing_Discord_Theme/main/Life_Drawing_Discord_Theme.theme.css
  */
 
-/* === 🌼 Root Variables === */
-:root {
-  --base-color: rgb(173, 164, 137);
-  --accent-color: #bfc9a4;
-  --accent-strong: #9eac7a;
-  --highlight-color: #d4c06b;
-  --text-color: #2f2b24;
-  --font-family: "Nunito", "Segoe UI", sans-serif;
-  --background-image: url("https://i.imgur.com/5jWGPTg.png"); /* Replace with your own if needed */
-  --background-blur: 8px;
+/* === IMPORT Discord+ THEME ENGINE === */
+@import url('https://plusinsta.github.io/discord-plus/src/DiscordPlus-source.theme.css');
+
+/* === CUSTOM VARIABLES FOR LIFE DRAWING THEME === */
+.theme-dark, .theme-light {
+  /* 🌿 Backdrop — keep empty for now so you can set it later */
+  --dplus-backdrop: none;
+
+  /* 🎨 Base palette (warm beige + sage tones) */
+  --dplus-background-color-hue: 45;            /* warm neutral hue */
+  --dplus-background-color-saturation-amount: 0.7;
+  --dplus-background-color-lightness-amount: 0.9;
+  --dplus-background-color-alpha: 0.9;
+
+  /* 🍃 Accent tones — muted sage / olive green */
+  --dplus-accent-color-hue: 90;                /* soft green hue */
+  --dplus-accent-color-saturation: 35%;
+  --dplus-accent-color-lightness: 42%;
+
+  /* ✨ Foreground + links tweak */
+  --dplus-foreground-color-hue-base: 30;
+  --dplus-foreground-color-hue-links: 55;
+  --dplus-foreground-color-saturation-amount: 1;
+  --dplus-foreground-color-lightness-amount: 1;
+
+  /* 💬 Opacity of UI surfaces */
+  --dplus-background-color-alpha: 0.85;
+
+  /* 🖋 Fonts */
+  --dplus-font-ui: 'Nunito';
+  --dplus-font-body: 'Nunito';
+  --dplus-font-header: 'Poppins';
+
+  /* 🪵 Rounding + spacing */
+  --dplus-radius-ui: 14px;
+  --dplus-radius-avatar: 20%;
+  --dplus-radius-server: 20%;
+  --dplus-spacing-ui: 10px;
+  --dplus-spacing-app: 10px;
+
+  /* 🖼 Avatar sizes */
+  --dplus-icon-avatar-chat: 64px;
+  --dplus-icon-avatar-list: 32px;
+  --dplus-icon-avatar-profile: 80px;
 }
 
-/* === 🌿 Force Discord to Use These Variables === */
-.theme-dark, 
-.theme-light, 
-#app-mount {
-  /* Force Discord’s core backgrounds */
-  --background-primary: var(--base-color) !important;
-  --background-secondary: var(--base-color) !important;
-  --background-tertiary: var(--base-color) !important;
-  --background-floating: var(--base-color) !important;
-  --background-modifier-hover: rgba(0, 0, 0, 0.05) !important;
-  --background-modifier-selected: rgba(0, 0, 0, 0.1) !important;
-
-  --text-normal: var(--text-color) !important;
-  --text-muted: color-mix(in srgb, var(--text-color) 70%, white 30%) !important;
-  --font-primary: var(--font-family) !important;
-  --brand-experiment: var(--highlight-color) !important;
-}
-
-/* === 🍃 Add a Background Overlay to Beat "Ash" === */
+/* OPTIONAL: Add a subtle texture overlay if you want more warmth later
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: var(--base-color) var(--background-image) center/cover no-repeat;
-  background-attachment: fixed;
-  opacity: 1;
+  background: rgba(173,164,137,0.6);
   pointer-events: none;
 }
-
-/* === 🌸 Panels and Containers === */
-.container-2cd8Mz,
-.sidebar-3K3Z4C,
-.chat-2ZfjoI,
-.membersWrap-3NUR2t {
-  background-color: rgba(255, 255, 255, 0.75) !important;
-  backdrop-filter: blur(var(--background-blur)) !important;
-  border-radius: 22px !important;
-  margin: 10px !important;
-  padding: 10px !important;
-  border: 2px solid rgba(184, 182, 153, 0.3);
-  background-blend-mode: soft-light;
-}
-
-/* === 🌻 Text === */
-.markup-eYLPri,
-.messageContent-2t3eCI {
-  color: var(
+*/

@@ -1,65 +1,68 @@
 /**
- * @name Life Drawing Discord Theme
- * @description A painterly, warm BetterDiscord theme inspired by sketchbooks, parchment, and soft natural hues.
+ * @name Life Drawing Source Theme
+ * @description Base engine for the Life Drawing BetterDiscord theme.
  * @author SAvvyyybbb
  * @version 1.0
- * @source https://github.com/SAvvyyybbb/Life_Drawing_Discord_Theme
- * @updateUrl https://raw.githubusercontent.com/SAvvyyybbb/Life_Drawing_Discord_Theme/main/Life_Drawing_Discord_Theme.theme.css
  */
 
-/* === IMPORT Discord+ THEME ENGINE === */
-@import url('https://plusinsta.github.io/discord-plus/src/DiscordPlus-source.theme.css');
-
-/* === CUSTOM VARIABLES FOR LIFE DRAWING THEME === */
+/* === ROOT VARIABLES === */
 .theme-dark, .theme-light {
-  /* 🌿 Backdrop — keep empty for now so you can set it later */
-  --dplus-backdrop: none;
-
-  /* 🎨 Base palette (warm beige + sage tones) */
-  --dplus-background-color-hue: 45;            /* warm neutral hue */
-  --dplus-background-color-saturation-amount: 0.7;
-  --dplus-background-color-lightness-amount: 0.9;
-  --dplus-background-color-alpha: 0.9;
-
-  /* 🍃 Accent tones — muted sage / olive green */
-  --dplus-accent-color-hue: 90;                /* soft green hue */
-  --dplus-accent-color-saturation: 35%;
-  --dplus-accent-color-lightness: 42%;
-
-  /* ✨ Foreground + links tweak */
-  --dplus-foreground-color-hue-base: 30;
-  --dplus-foreground-color-hue-links: 55;
-  --dplus-foreground-color-saturation-amount: 1;
-  --dplus-foreground-color-lightness-amount: 1;
-
-  /* 💬 Opacity of UI surfaces */
-  --dplus-background-color-alpha: 0.85;
-
-  /* 🖋 Fonts */
-  --dplus-font-ui: 'Nunito';
-  --dplus-font-body: 'Nunito';
-  --dplus-font-header: 'Poppins';
-
-  /* 🪵 Rounding + spacing */
-  --dplus-radius-ui: 14px;
-  --dplus-radius-avatar: 20%;
-  --dplus-radius-server: 20%;
-  --dplus-spacing-ui: 10px;
-  --dplus-spacing-app: 10px;
-
-  /* 🖼 Avatar sizes */
-  --dplus-icon-avatar-chat: 64px;
-  --dplus-icon-avatar-list: 32px;
-  --dplus-icon-avatar-profile: 80px;
+  --base-color: rgb(173,164,137);
+  --accent-color: #a8b68f;
+  --accent-strong: #8fa272;
+  --text-color: #2f2b24;
+  --link-color: #b7b35d;
+  --hover-bg: rgba(173,164,137,0.2);
+  --font-family: "Nunito", "Segoe UI", sans-serif;
+  --background-blur: 8px;
+  --chat-bg-opacity: 0.8;
 }
 
-/* OPTIONAL: Add a subtle texture overlay if you want more warmth later
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: rgba(173,164,137,0.6);
-  pointer-events: none;
+/* === APP BACKGROUND === */
+body, #app-mount {
+  background: var(--base-color) var(--background-image, none) center/cover no-repeat fixed !important;
+  backdrop-filter: blur(var(--background-blur)) !important;
+  color: var(--text-color);
+  font-family: var(--font-family);
 }
-*/
+
+/* === PANELS AND CONTENT === */
+.container-2cd8Mz,
+.sidebar-3K3Z4C,
+.chat-2ZfjoI,
+.membersWrap-3NUR2t {
+  background-color: rgba(255,255,255,var(--chat-bg-opacity)) !important;
+  border-radius: 22px !important;
+  margin: 10px !important;
+  padding: 10px !important;
+  border: 2px solid rgba(184,182,153,0.3);
+  backdrop-filter: blur(var(--background-blur)) !important;
+  background-image: var(--flower-border-image, none);
+  background-repeat: repeat;
+  background-size: 300px;
+  background-blend-mode: soft-light;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-strong) !important;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-color) !important;
+}
+
+/* === BUTTONS === */
+.button-38aScr, .lookFilled-yCfaCM, .buttonColor-3bP3fX {
+  background-color: var(--accent-strong) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  transition: 0.2s ease;
+}
+.button-38aScr:hover, .lookFilled-yCfaCM:hover, .buttonColor-3bP3fX:hover {
+  background-color: var(--accent-color) !important;
+}

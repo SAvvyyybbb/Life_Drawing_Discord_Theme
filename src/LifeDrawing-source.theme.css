@@ -1,178 +1,140 @@
 /**
- * @name Life Drawing Discord Theme
+ * @name LifeDrawing Theme
  * @author Savvyyy
- * @version 0.2
- * @description Painterly, natural BetterDiscord theme with warm organic tones.
- * @source https://github.com/savvyyybbb/Life_Drawing_Discord_Theme
+ * @version 1.0
+ * @description A painterly, natural BetterDiscord theme template.
  * @website https://savvyyybbb.github.io/Life_Drawing_Discord_Theme/
+ * @source https://github.com/savvyyybbb/Life_Drawing_Discord_Theme
+ * @invite betterdiscord
  */
 
-/* ===============================
-   🎨 GLOBAL VARIABLES
-   =============================== */
+/* ============================================================
+   🌱 1. VARIABLES
+   ============================================================ */
+
 :root {
-  /* ----- Core Palette ----- */
-  --bg-main: #f4f1ea;           /* soft parchment */
-  --bg-accent: #c9d6b5;         /* gentle sage */
-  --bg-highlight: #e9e1b9;      /* warm yellow highlight */
-  --bg-muted: #ebe6da;          /* lighter neutral */
-  --text-main: #3e3a35;
-  --text-muted: #7a766d;
+  /* 🌿 Core Palette */
+  --life-bg-color: #f4f1ea;
+  --life-accent: #b7c8b5;
+  --life-accent-strong: #9cb17f;
+  --life-text-color: #3f3a35;
+  --life-muted-text: #7a766d;
 
-  /* ----- Visual Debug Colors (temporary) ----- */
-  --debug-serverlist: #b7c8b555;   /* light sage transparent */
-  --debug-sidebar: #fce6a555;      /* warm yellow transparent */
-  --debug-chat: #cce3b855;         /* minty transparent */
-  --debug-members: #f0d8d855;      /* pale rose transparent */
-  --debug-header: #d9ead355;       /* light green-yellow */
+  /* 🌸 Painterly Backdrop */
+  --life-background: url("https://your-image-url-here.png");
+  --life-background-blur: 8px;
+  --life-background-brightness: 1;
+  --life-background-saturation: 1.05;
 
-  /* ----- Background & Texture ----- */
-  --background-image: url("https://example.com/your-background.jpg");
-  --background-blur: 8px;
-  --background-brightness: 1.05;
-  --background-saturation: 1.0;
+  /* 🎨 UI Accents */
+  --life-header-bg: rgba(231, 224, 198, 0.6);
+  --life-sidebar-bg: rgba(248, 244, 230, 0.5);
+  --life-chat-bg: rgba(255, 255, 255, 0.4);
+  --life-members-bg: rgba(239, 237, 228, 0.5);
 
-  /* ----- Accents ----- */
-  --accent-color: #b7c8b5;
-  --accent-strong: #9cb17f;
-  --link-color: #b9ad5b;
-  --scrollbar-color: #a7ba9b;
+  /* 🪵 Scrollbars */
+  --life-scrollbar: rgba(120, 140, 120, 0.6);
 
-  /* ----- Fonts ----- */
-  --font-primary: "Nunito", "Segoe UI", sans-serif;
-  --font-heading: "Poppins", "Nunito", sans-serif;
+  /* ✍️ Fonts */
+  --life-font-primary: "Nunito", "Segoe UI", sans-serif;
+  --life-font-heading: "Poppins", "Nunito", sans-serif;
 }
 
-/* ===============================
-   🌿 BASE STYLING
-   =============================== */
-body {
-  background: var(--bg-main) var(--background-image) center/cover no-repeat !important;
-  background-attachment: fixed;
-  color: var(--text-main);
-  font-family: var(--font-primary);
+/* ============================================================
+   🌄 2. BASE APP BACKGROUND
+   ============================================================ */
+
+#app-mount {
+  background: var(--life-bg-color) var(--life-background) center/cover no-repeat fixed !important;
+  filter: brightness(var(--life-background-brightness)) saturate(var(--life-background-saturation));
 }
 
-/* ===============================
-   🧭 LAYOUT DEBUG COLORS (Fixed)
-   =============================== */
-
-./* ===============================
-   🧭 LAYOUT DEBUG COLORS (Fixed)
-   =============================== */
-
-..appMount__51fd7 .guilds-2JjMmN {
-  background: var(--debug-serverlist) !important;
+/* Make Discord’s layers transparent so our background shows */
+.appMount__51fd7,
+.app__160d8,
+#app-mount .bg__960e4 {
+  background-color: transparent !important;
 }
 
-.appMount__51fd7 .sidebar-1tnWFu {
-  background: var(--debug-sidebar) !important;
+/* Transparency mode override */
+.bd-transparency,
+.bd-transparency #app-mount {
+  background: transparent !important;
 }
 
-.appMount__51fd7 .chatContent-3KubbW,
-.appMount__51fd7 .chat-2ZfjoI {
-  background: var(--debug-chat) !important;
+/* ============================================================
+   🧭 3. MAIN LAYOUT COLORS
+   ============================================================ */
+
+.appMount-3lHmkl .guilds-2JjMmN {
+  background: var(--life-accent) !important;
+  backdrop-filter: blur(var(--life-background-blur));
 }
 
-.appMount__51fd7 .membersWrap-3NUR2t {
-  background: var(--debug-members) !important;
+.appMount-3lHmkl .sidebar-1tnWFu {
+  background: var(--life-sidebar-bg) !important;
+  backdrop-filter: blur(var(--life-background-blur));
 }
 
-.appMount__51fd7 .title-31SJ6t {
-  background: var(--debug-header) !important;
-}
- .guilds-2JjMmN {
-  background: var(--debug-serverlist) !important;
-}
-
-.appMount__51fd7 .sidebar-1tnWFu {
-  background: var(--debug-sidebar) !important;
+.appMount-3lHmkl .chatContent-3KubbW,
+.appMount-3lHmkl .chat-2ZfjoI {
+  background: var(--life-chat-bg) !important;
+  backdrop-filter: blur(var(--life-background-blur));
 }
 
-.appMount__51fd7 .chatContent-3KubbW,
-.appMount__51fd7 .chat-2ZfjoI {
-  background: var(--debug-chat) !important;
+.appMount-3lHmkl .membersWrap-3NUR2t {
+  background: var(--life-members-bg) !important;
+  backdrop-filter: blur(var(--life-background-blur));
 }
 
-.appMount__51fd7 .membersWrap-3NUR2t {
-  background: var(--debug-members) !important;
+.appMount-3lHmkl .title-31SJ6t {
+  background: var(--life-header-bg) !important;
+  backdrop-filter: blur(calc(var(--life-background-blur) / 2));
 }
 
-.appMount__51fd7 .title-31SJ6t {
-  background: var(--debug-header) !important;
-}
-
-
-/* ===============================
-   ✨ INTERACTIVE ELEMENTS
-   =============================== */
-a,
-button,
-[class*="button"],
-[class*="clickable"] {
-  transition: 0.2s ease;
-  color: var(--link-color);
-}
-
-a:hover,
-button:hover {
-  filter: brightness(1.1);
-  transform: scale(1.03);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-color);
-  border-radius: 10px;
-}
-
-/* ===============================
-   🪶 TEXT STYLING
-   =============================== */
-h1, h2, h3, h4, h5 {
-  font-family: var(--font-heading);
-}
+/* ============================================================
+   💬 4. CHAT AND TEXT
+   ============================================================ */
 
 .messageContent {
-  color: var(--text-main);
+  color: var(--life-text-color);
+  font-family: var(--life-font-primary);
 }
 
-/* Mention highlights */
+h1, h2, h3, h4, h5 {
+  font-family: var(--life-font-heading);
+  color: var(--life-accent-strong);
+}
+
+/* Mentions */
 [class*="mentioned"] {
-  background-color: rgba(156, 177, 127, 0.25);
-  border-left: 3px solid var(--accent-color);
+  background-color: rgba(156, 177, 127, 0.2);
+  border-left: 3px solid var(--life-accent);
   border-radius: 5px;
   padding-left: 5px;
 }
 
-/* ===============================
-   🧱 DEBUG LABEL
-   (shows which layer is which)
-   =============================== */
-div[class*="chatContent"]::before {
-  content: "💬 Chat Area";
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  font-size: 10px;
-  opacity: 0.4;
+/* Links */
+a {
+  color: var(--life-accent-strong);
+  transition: 0.2s ease;
+}
+a:hover {
+  color: var(--life-text-color);
+  text-decoration: underline;
 }
 
-div[class*="sidebar"]::before {
-  content: "📜 Sidebar";
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  font-size: 10px;
-  opacity: 0.4;
+/* ============================================================
+   🪵 5. SCROLLBARS
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--life-scrollbar);
+  border-radius: 8px;
 }
 
-div[class*="membersWrap"]::before {
-  content: "👥 Members";
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  fon
+/* ============================================================
+   ✨ 6. OPTIONAL DEBUG VIEW (toggle

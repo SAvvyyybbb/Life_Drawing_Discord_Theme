@@ -1,39 +1,48 @@
 /**
  * @name LifeDrawing Theme
  * @author Savvyyy
- * @version 1.5
- * @description A painterly, natural BetterDiscord theme template with warm, muted tones and layered transparency.
+ * @version 1.6
+ * @description A painterly, natural BetterDiscord theme template with warm, muted tones and clear documentation for easy editing.
  * @website https://savvyyybbb.github.io/Life_Drawing_Discord_Theme/
  * @source https://github.com/savvyyybbb/Life_Drawing_Discord_Theme
  */
 
 /* ============================================================
-   🌱 1. VARIABLES
+   🌱 1. VARIABLES — All your editable theme settings
    ============================================================ */
+/*
+This section controls all the visual aspects of your theme:
+colors, backgrounds, fonts, and general brightness.
+
+💡 Tips:
+- Use soft, desaturated tones for natural looks.
+- You can paste your own image URL into --life-background.
+- Adjust opacity (0.0 → 1.0) in rgba() colors to make layers more or less transparent.
+*/
 
 :root {
-  /* 🎨 Core Palette (muted warm greens / browns) */
-  --life-bg-color: #e8e5dc;
-  --life-accent: #b7c8b5;
-  --life-accent-strong: #93a687;
-  --life-text-color: #3e3a32;
-  --life-muted-text: #726f66;
+  /* 🎨 Core Palette */
+  --life-bg-color: #e8e5dc;         /* fallback color behind everything */
+  --life-accent: #b7c8b5;           /* main accent (used in server list, highlights) */
+  --life-accent-strong: #93a687;    /* stronger version for contrast (links, headings) */
+  --life-text-color: #3e3a32;       /* default chat text color */
+  --life-muted-text: #726f66;       /* secondary or less-important text */
 
   /* 🌸 Painterly Backdrop */
-  --life-background: url("https://your-image-url-here.png");
-  --life-background-blur: 8px;
-  --life-background-brightness: 1;
-  --life-background-saturation: 1.05;
+  --life-background: url("https://your-image-url-here.png"); /* 🖼️ your custom art */
+  --life-background-blur: 8px;         /* how soft the background appears */
+  --life-background-brightness: 1;     /* 1 = normal, <1 darker, >1 brighter */
+  --life-background-saturation: 1.05;  /* adjust color intensity of background */
 
-  /* 🌄 Containers */
-  --life-header-bg: rgba(231, 224, 198, 0.7);
-  --life-sidebar-bg: rgba(236, 232, 220, 0.7);
-  --life-chat-bg: rgba(245, 242, 233, 0.7);
-  --life-members-bg: rgba(232, 230, 223, 0.7);
-  --life-container-fallback: rgba(230, 228, 220, 0.9);
+  /* 🌄 Containers — major layout blocks */
+  --life-header-bg: rgba(231, 224, 198, 0.7); /* top bar where server name is */
+  --life-sidebar-bg: rgba(236, 232, 220, 0.7); /* server/channel sidebar */
+  --life-chat-bg: rgba(245, 242, 233, 0.7); /* chat area where messages appear */
+  --life-members-bg: rgba(232, 230, 223, 0.7); /* right-hand member list */
+  --life-container-fallback: rgba(230, 228, 220, 0.9); /* backup color for untouched areas */
 
   /* 🪵 Scrollbars */
-  --life-scrollbar: rgba(130, 150, 130, 0.4);
+  --life-scrollbar: rgba(130, 150, 130, 0.4); /* scrollbar thumb color */
 
   /* ✍️ Fonts */
   --life-font-primary: "Nunito", "Segoe UI", sans-serif;
@@ -43,6 +52,9 @@
 /* ============================================================
    🌄 2. BASE APP BACKGROUND
    ============================================================ */
+/*
+Controls the global Discord background and its treatment (image, blur, brightness).
+*/
 
 #app-mount {
   background: var(--life-bg-color) var(--life-background) center/cover no-repeat fixed !important;
@@ -50,13 +62,14 @@
           saturate(var(--life-background-saturation));
 }
 
+/* Make Discord’s base layers transparent so your image shows through */
 .appMount__51fd7,
 .app__160d8,
 #app-mount .bg__960e4 {
   background-color: transparent !important;
 }
 
-/* Transparency mode override */
+/* BetterDiscord transparency mode support */
 .bd-transparency,
 .bd-transparency #app-mount {
   background: transparent !important;
@@ -65,37 +78,52 @@
 /* ============================================================
    🧱 3. CONTAINERS & LAYOUT
    ============================================================ */
+/*
+Each major part of the Discord interface has its own block.
+You can change or replace backgrounds and add your own images here.
+*/
 
-/* Server List */
+/* Server List (far left vertical bar) */
 [class*="guilds"], [class*="guilds_"] {
   background: var(--life-accent) !important;
 }
 
-/* Sidebar */
+/* Sidebar (channels list area) */
 [class*="sidebar"], [class*="sidebar_"], [class*="sidebar_c48ade"] {
   background: var(--life-sidebar-bg) !important;
+  /* Example: add a texture image
+     background: url("https://example.com/leaf-texture.png") center/cover no-repeat,
+                 var(--life-sidebar-bg) !important;
+     🔸 Ideal drawing aspect: 1:3 (tall rectangle)
+  */
 }
 
-/* Chat */
+/* Chat content (main messages area) */
 [class*="chatContent"], [class*="chatContent_"],
 [class*="chat"], [class*="chat_"],
 [class*="content_"], [class*="content"] {
   background: var(--life-chat-bg) !important;
+  /* Ideal drawing aspect: 16:9 (widescreen rectangle) */
 }
 
-/* Members List */
+/* Members list (right sidebar) */
 [class*="membersWrap"], [class*="membersWrap_"] {
   background: var(--life-members-bg) !important;
+  /* Ideal drawing aspect: 1:3 (tall rectangle) */
 }
 
-/* Header / Title Bar */
+/* Title / header bar (top strip) */
 [class*="title"], [class*="title_"] {
   background: var(--life-header-bg) !important;
+  /* Ideal drawing aspect: full-width strip, 1920x100px recommended */
 }
 
 /* ============================================================
    🪵 4. SCROLLBARS
    ============================================================ */
+/*
+Change the appearance of scrollbars in channels, chat, and member lists.
+*/
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -108,6 +136,9 @@
 /* ============================================================
    💬 5. CHAT & TEXT
    ============================================================ */
+/*
+Typography and message visuals.
+*/
 
 .messageContent {
   color: var(--life-text-color);
@@ -119,7 +150,7 @@ h1, h2, h3, h4, h5 {
   color: var(--life-accent-strong);
 }
 
-/* Mentions */
+/* Mentions (when you’re tagged in chat) */
 [class*="mentioned"] {
   background-color: rgba(147, 166, 135, 0.25);
   border-left: 3px solid var(--life-accent);
@@ -127,7 +158,7 @@ h1, h2, h3, h4, h5 {
   padding-left: 5px;
 }
 
-/* Links */
+/* Links (URLs, invites) */
 a {
   color: var(--life-accent-strong);
   transition: 0.2s ease;
@@ -138,8 +169,12 @@ a:hover {
 }
 
 /* ============================================================
-   🧰 6. ELEMENT DEBUG VIEW (optional)
+   🧰 6. DEBUG VIEW (optional)
    ============================================================ */
+/*
+Turn this on (add .debug-borders to #app-mount in dev tools)
+to see outlines around all layout sections.
+*/
 .debug-borders {
   outline: 1px dashed rgba(0, 0, 0, 0.15);
 }
@@ -148,8 +183,9 @@ a:hover {
    🌫️ 7. STRONG PSEUDO-ELEMENT & OVERLAY CLEANUP
    ============================================================ */
 /*
-Eliminates Discord’s dark overlays, ::before, ::after elements, and shadows.
-This prevents black tinting over sidebars and containers.
+This section removes black/gray overlays and pseudo-elements
+(Discord sometimes adds them as ::before or ::after shadows).
+Keep this section intact for transparency to work correctly.
 */
 
 #app-mount *::before,
@@ -163,7 +199,7 @@ This prevents black tinting over sidebars and containers.
   pointer-events: none !important;
 }
 
-/* Remove injected backdrops & overlays */
+/* Remove Discord’s shadow/backdrop layers */
 [class*="layer_"],
 [class*="backdrop_"],
 [class*="container_"],
@@ -193,6 +229,10 @@ This prevents black tinting over sidebars and containers.
 /* ============================================================
    🌿 8. CATCH-ALL DEFAULT BACKGROUND
    ============================================================ */
+/*
+Any element not specifically styled above will use this fallback.
+Use it to make sure nothing looks out of place.
+*/
 
 #app-mount *:not(img):not(video) {
   background-color: var(--life-container-fallback) !important;

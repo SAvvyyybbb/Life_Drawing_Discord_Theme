@@ -1,10 +1,8 @@
 /**
  * @name Life Drawing Discord Theme
- * @description Painterly warm Discord theme using overlay background.
+ * @description A warm painterly BetterDiscord theme inspired by sketchbooks and sage tones.
  * @author SAvvyyybbb
- * @version 1.2
- * @source https://github.com/SAvvyyybbb/Life_Drawing_Discord_Theme
- * @updateUrl https://raw.githubusercontent.com/SAvvyyybbb/Life_Drawing_Discord_Theme/main/Life_Drawing_Discord_Theme.theme.css
+ * @version 1.0
  */
 
-@import url('https://raw.githubusercontent.com/SAvvyyybbb/Life_Drawing_Discord_Theme/main/src/LifeDrawing-source.theme.css');
+@import url("https://savvyyybbb.github.io/Life_Drawing_Discord_Theme/src/LifeDrawing-source.theme.css");

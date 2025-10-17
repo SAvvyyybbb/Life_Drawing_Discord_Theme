@@ -137,4 +137,9 @@ a:hover {
 }
 
 /* ============================================================
-   ✨ 6. OPTIONAL DEBUG VIEW (toggle
+   ✨ 6. OPTIONAL DEBUG VIEW (toggle visibility)
+   ============================================================ */
+
+.debug-borders {
+  outline: 1px dashed rgba(0, 0, 0, 0.15);
+}

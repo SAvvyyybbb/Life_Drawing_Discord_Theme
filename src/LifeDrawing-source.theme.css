@@ -1,25 +1,159 @@
 /**
- * @name Life Drawing Theme (Scrollbar Test)
- * @description Debug version — makes scrollbar bright blue to verify CSS loading.
+ * @name Life Drawing Source Theme (Force Backdrop)
+ * @description Forces warm sage/beige backdrop + reliable overrides. Edit vars below.
  * @author SAvvyyybbb
- * @version 0.1
+ * @version 1.4
  */
 
-/* === SCROLLBAR TEST === */
-::-webkit-scrollbar {
-  width: 12px !important;
+/* =========================
+   CONFIG (edit these)
+   ========================= */
+
+:root,
+.theme-dark,
+.theme-light {
+  /* Change this RGB to whatever base colour you want */
+  --life-base-rgb: 173,164,137; /* rgb(173,164,137) */
+  --life-base: rgb(var(--life-base-rgb));
+  --life-base-alpha: rgba(var(--life-base-rgb),0.95);
+
+  --life-accent: #b3ca78;
+  --life-text: #2f2b24;
+  --life-font: "Nunito", "Segoe UI", sans-serif;
+
+  /* Background image placeholder (leave `none` while you prepare art) */
+  --life-background-image: none;
+  /* Example to use later:
+     --life-background-image: url("https://i.imgur.com/your-image.png");
+  */
+
+  --life-blur: 8px;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #007BFF !important; /* bright blue */
-  border-radius: 10px !important;
+/* =========================
+   HIGH-PRIORITY TOKEN OVERRIDES
+   (try to beat Discord's theme tokens)
+   ========================= */
+
+.theme-dark, .theme-light, #app-mount, [class*="theme-"] {
+  --background-primary: var(--life-base) !important;
+  --background-secondary: var(--life-base) !important;
+  --background-tertiary: var(--life-base) !important;
+  --background-floating: var(--life-base-alpha) !important;
+
+  /* text / interactive tokens */
+  --text-normal: var(--life-text) !important;
+  --font-primary: var(--life-font) !important;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #00BFFF !important; /* lighter blue on hover */
+/* =========================
+   RELIABLE OVERLAY (always visible)
+   This paints a layer behind everything.
+   ========================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -9999; /* far behind UI */
+  background: var(--life-base) var(--life-background-image) center/cover no-repeat fixed !important;
+  background-attachment: fixed !important;
+  pointer-events: none;
+  opacity: 1 !important;
 }
 
-/* === BASE DEBUG === */
+/* Debug outline — remove when confirmed */
 body {
-  outline: 3px dashed #007BFF !important; /* blue outline to confirm load */
+  outline: 3px dashed rgba(0,120,255,0.6) !important; /* bright blue outline to confirm load */
+}
+
+/* =========================
+   EXTRA: direct class rules for your client (non-brittle + specific)
+   You discovered these names earlier — keep them in so it definitely
+   catches the root / bg / chat in your build.
+   ========================= */
+
+.appMount__51fd7,
+[class*="appMount"],
+[class*="app_"],
+.bg__960e4,
+[class*="bg_"],
+.chat_f75fb0,
+[class*="chat_"] {
+  background: var(--life-base) !important;
+  background-color: var(--life-base) !important;
+  color: var(--life-text) !important;
+  backdrop-filter: blur(var(--life-blur)) !important;
+}
+
+/* =========================
+   Panels: chat, sidebar, members
+   Use these to control panel tint / opacity
+   ========================= */
+
+[class*="container_"],
+[class*="sidebar_"],
+[class*="guilds_"],
+[class*="chat_"],
+[class*="membersWrap_"],
+[class*="members_"] {
+  background-color: rgba(255,255,255,0.82) !important; /* panel tint — change for more/less parchment */
+  border-radius: 18px !important;
+  margin: 10px !important;
+  padding: 8px !important;
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  backdrop-filter: blur(calc(var(--life-blur) - 2px)) !important;
+}
+
+/* =========================
+   Useful commented image examples
+   (uncomment and edit URLs when ready)
+   ========================= */
+
+/* Large full-page painterly image behind everything:
+body::before {
+  background: var(--life-base) url("https://i.imgur.com/your-painterly-bg.png") center/cover no-repeat fixed !important;
+}
+*/
+
+/* Chat-specific subtle texture:
+[class*="chat_"] {
+  background-image: url("https://i.imgur.com/your-chat-texture.png");
+  background-blend-mode: soft-light;
+  background-size: cover;
+}
+*/
+
+/* Sidebar floral border:
+[class*="sidebar_"] {
+  background-image: url("https://i.imgur.com/your-floral-border.png");
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+*/
+
+/* =========================
+   Small UI extras
+   ========================= */
+
+.messageContent-2t3eCI,
+.markup-eYLPri,
+.textArea-2CLwUE {
+  color: var(--life-text) !important;
+  font-family: var(--life-font) !important;
+}
+
+/* Make scrollbars clearly visible while testing */
+::-webkit-scrollbar { width: 12px !important; }
+::-webkit-scrollbar-thumb {
+  background: #2f6fff !important; /* bright blue test scrollbar */
+  border-radius: 10px !important;
+  border: 2px solid rgba(255,255,255,0.6) !important;
+}
+
+/* Buttons */
+[class*="button_"], .button-38aScr, .lookFilled-yCfaCM {
+  background-color: var(--life-accent) !important;
+  color: white !important;
+  border-radius: 10px !important;
 }

@@ -1,6 +1,6 @@
 /**
- * @name LifeDrawing Theme — Modular Template
- * @description Dark painterly BetterDiscord base with clear, editable structure.
+ * @name LifeDrawing Theme — Debug + Soft Palette Edition
+ * @description Warm dark BetterDiscord base with labeled layout overlay.
  */
 
 /* ============================================================
@@ -8,24 +8,24 @@
    ============================================================ */
 
 :root {
-  /* Palette */
-  --life-bg-color: #1e201f;
-  --life-accent: #465f46;
-  --life-accent-strong: #5b7b5a;
-  --life-text-color: #e5e3dc;
-  --life-muted-text: #aaa59a;
+  /* --- Palette: muted green + warm undertones --- */
+  --life-bg-color: #1a1c1a;
+  --life-accent: #3e5542;
+  --life-accent-strong: #5e7b5d;
+  --life-text-color: #d8d5ca;
+  --life-muted-text: #9b988e;
 
-  /* Scrollbar + Containers */
-  --life-scrollbar: rgba(100, 120, 100, 0.6);
-  --life-scrollbar-hover: rgba(150, 170, 150, 0.8);
-  --life-container-bg: rgba(35, 37, 34, 0.85);
-  --life-container-border: rgba(90, 110, 90, 0.4);
+  /* --- Containers + Scrollbars --- */
+  --life-scrollbar: rgba(110, 130, 110, 0.5);
+  --life-scrollbar-hover: rgba(160, 180, 160, 0.7);
+  --life-container-bg: rgba(40, 43, 38, 0.85);
+  --life-container-border: rgba(90, 110, 90, 0.35);
 
-  /* Fonts */
+  /* --- Typography --- */
   --life-font-primary: "Nunito", "Segoe UI", sans-serif;
   --life-font-heading: "Poppins", "Nunito", sans-serif;
 
-  /* Frosted-glass toggle values */
+  /* --- Frosted-glass --- */
   --life-glass-blur: 10px;
   --life-glass-opacity: 0.7;
 }
@@ -35,10 +35,10 @@
    ============================================================ */
 
 .theme-dark, :root.theme-dark {
-  --background-primary: #252825 !important;
-  --background-secondary: #202320 !important;
-  --background-tertiary: #191b19 !important;
-  --background-floating: #2c2f2b !important;
+  --background-primary: #222522 !important;
+  --background-secondary: #1c1e1c !important;
+  --background-tertiary: #181a18 !important;
+  --background-floating: #2b2e2b !important;
   --background-accent: var(--life-accent) !important;
 
   --text-normal: var(--life-text-color) !important;
@@ -50,8 +50,10 @@
    ============================================================ */
 
 #app-mount {
-  background: var(--life-bg-color) url("https://your-global-bg.png") center/cover no-repeat fixed !important;
-  filter: brightness(0.9) saturate(1.05);
+  background: var(--life-bg-color)
+    url("https://your-global-bg.png")
+    center/cover no-repeat fixed !important;
+  filter: brightness(0.95) saturate(1.05);
 }
 
 /* ============================================================
@@ -60,7 +62,7 @@
 
 /* --- 4.1 SERVER LIST --- */
 #app-mount [class*="guilds_"], #app-mount [class*="guilds"] {
-  background: #2e2f28 !important;
+  background: #202420 !important;
 }
 
 /* --- 4.2 SIDEBAR --- */
@@ -75,50 +77,46 @@
 
 /* --- 4.4 MEMBER LIST --- */
 #app-mount [class*="membersWrap_"], #app-mount [class*="membersWrap"] {
-  background: #1c1e1c !important;
+  background: #1d1f1d !important;
 }
 
 /* --- 4.5 TITLE / HEADER --- */
 #app-mount [class*="title_"], #app-mount [class*="title"] {
-  background: #33352f !important;
+  background: #30332f !important;
 }
 
 /* --- 4.6 MESSAGE BOX --- */
 #app-mount [class*="channelTextArea_"], #app-mount [class*="channelTextArea"] {
-  background: #191b18 !important;
+  background: #181a18 !important;
 }
 
 /* ============================================================
    🌫️ 5. FROSTED GLASS TOGGLES
    ============================================================ */
 
-/* Example: Add .frosted class to apply blur/opacity globally */
 .frosted #app-mount [class*="chatContent_"],
 .frosted #app-mount [class*="sidebar_"],
 .frosted #app-mount [class*="membersWrap_"] {
-  backdrop-filter: blur(var(--life-glass-blur)) brightness(1.1);
+  backdrop-filter: blur(var(--life-glass-blur)) brightness(1.05);
   background: rgba(30, 32, 31, var(--life-glass-opacity)) !important;
 }
 
 /* ============================================================
-   🧩 6. CONTAINERS (modals, popouts, cards, tooltips)
+   🧩 6. CONTAINERS (modals, popouts, settings)
    ============================================================ */
 
-/* Main card-style containers */
 [class*="container_"], [class*="contentRegion_"], [class*="settings_"] {
   background: var(--life-container-bg) !important;
   border: 1px solid var(--life-container-border) !important;
   border-radius: 10px !important;
 }
 
-/* Popouts, context menus */
 [class*="popout_"], [class*="menu_"], [class*="tooltip_"], [class*="modal_"] {
   background: var(--life-container-bg) !important;
   backdrop-filter: blur(calc(var(--life-glass-blur) / 2));
   border: 1px solid var(--life-container-border) !important;
 }
 
-/* User popout cards */
 [class*="userPopout_"], [class*="userProfileModalInner_"] {
   background: var(--life-container-bg) !important;
   border: 1px solid var(--life-container-border);
@@ -129,7 +127,6 @@
    🪵 7. SCROLLBARS (Global)
    ============================================================ */
 
-/* Default webkit scrollbar (applies to all scrollable content) */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -141,8 +138,6 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--life-scrollbar-hover) !important;
 }
-
-/* Discord’s internal scrollbar containers */
 [class*="scrollable_"], [class*="scroller_"] {
   scrollbar-color: var(--life-scrollbar) transparent !important;
   scrollbar-width: thin !important;
@@ -176,8 +171,62 @@ a:hover {
 }
 
 /* ============================================================
-   🧭 9. DEBUG VIEW
+   🧭 9. DEBUG LABEL OVERLAY (for artists)
    ============================================================ */
-:root.debug * {
-  outline: 1px dashed rgba(255, 255, 255, 0.2);
+
+/* Toggle by adding .debug-labeled to the <html> element or #app-mount */
+
+.debug-labeled::before {
+  content: "GLOBAL BACKGROUND (16:9)";
+  position: fixed;
+  top: 5px;
+  left: 10px;
+  font-size: 12px;
+  color: #f1f1e5;
+  background: rgba(60, 60, 55, 0.6);
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 9999;
 }
+
+.debug-labeled [class*="guilds_"]::before {
+  content: "SERVER LIST (≈150×350)";
+}
+.debug-labeled [class*="sidebar_"]::before {
+  content: "SIDEBAR (≈280×500)";
+}
+.debug-labeled [class*="chatContent_"]::before {
+  content: "CHAT (≈1600×900)";
+}
+.debug-labeled [class*="membersWrap_"]::before {
+  content: "MEMBERS (≈260×500)";
+}
+.debug-labeled [class*="channelTextArea_"]::before {
+  content: "MESSAGE BOX (≈1200×200)";
+}
+.debug-labeled [class*="title_"]::before {
+  content: "TITLE BAR (≈1600×200)";
+}
+
+/* Position all labels neatly in top-left corners of their blocks */
+.debug-labeled [class*="guilds_"]::before,
+.debug-labeled [class*="sidebar_"]::before,
+.debug-labeled [class*="chatContent_"]::before,
+.debug-labeled [class*="membersWrap_"]::before,
+.debug-labeled [class*="channelTextArea_"]::before,
+.debug-labeled [class*="title_"]::before {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 10px;
+  color: #e8e5d5;
+  background: rgba(80, 80, 70, 0.5);
+  padding: 3px 6px;
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ============================================================
+   🌱 END OF TEMPLATE
+   ============================================================ */

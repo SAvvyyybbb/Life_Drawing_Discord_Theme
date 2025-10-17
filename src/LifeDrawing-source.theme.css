@@ -130,17 +130,23 @@ body, #app-mount {
   transition: all 0.25s ease-in-out;
 }
 
-/* === LIFE DRAWING BACKDROP OVERLAY === */
-#life-drawing-overlay,
-body::before {
+/* === 🌄 UNIVERSAL BACKDROP FIX === */
+#app-mount::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: rgb(173, 164, 137); /* ← warm sage/beige base */
+  background: rgb(173, 164, 137); /* ← your warm backdrop colour */
   background-attachment: fixed;
+  opacity: 1;
   pointer-events: none;
 }
+
+/* Debug border so you can see if it’s active */
+#app-mount {
+  outline: 4px dashed rgba(255, 0, 0, 0.3); /* temporary debug outline */
+}
+
 
 /* === OVERRIDE DISCORD INTERNAL BACKGROUND === */
 .bg-1QIAus,

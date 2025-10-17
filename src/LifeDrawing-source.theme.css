@@ -1,162 +1,131 @@
 /**
- * @name Life Drawing Source Theme (Debug Edition)
- * @description Painterly warm test version with overlay background.
+ * @name Life Drawing Source Theme (Debug Colors)
+ * @description Painterly BetterDiscord theme with distinctive debug color mapping.
  * @author SAvvyyybbb
- * @version 1.2
+ * @version 1.3-debug
  */
-.theme-dark, 
-.theme-light, 
-#app-mount {
-  --background-primary: rgb(173, 164, 137) !important;
-  --background-secondary: rgb(173, 164, 137) !important;
-  --background-tertiary: rgb(173, 164, 137) !important;
-  --background-floating: rgba(173, 164, 137, 0.9) !important;
-  --background-accent: rgb(173, 164, 137) !important;
-}
-/* === 🌿 VARIABLES === */
+
 .theme-dark, .theme-light {
-  --base-color: rgb(216, 204, 173);        /* parchment tan */
-  --accent-color: #a4c76f;                 /* leafy green */
-  --accent-strong: #e8b447;                /* warm yellow-gold */
-  --text-color: #2e281a;                   /* rich brown */
-  --link-color: #d38c1f;                   /* golden link tone */
-  --hover-bg: rgba(232, 180, 71, 0.3);
-  --font-family: "Nunito", "Segoe UI", sans-serif;
-  --background-blur: 10px;
-  --chat-bg-opacity: 0.85;
-  --debug-border: 3px solid var(--accent-strong);
+  /* 🎨 Base Palette — debugging edition */
+  --life-base-color: rgb(210, 200, 180);    /* General background (tan parchment) */
+  --life-accent: #7FB069;                   /* Green — buttons hover, highlights */
+  --life-accent-strong: #E09F3E;            /* Orange-gold — buttons + accent blocks */
+  --life-text: #2B2B2B;                     /* Primary text color */
+  --life-link: #2978A0;                     /* Blue — links */
+  --life-hover-bg: rgba(255, 223, 90, 0.35);/* Soft yellow hover glow */
+  --life-bg-opacity: 0.85;
+
+  /* 🪶 Debug-Specific Distinctive Colors */
+  --life-header-bg: #C9E4DE;                /* Pale mint green header */
+  --life-sidebar-bg: #FFD6A5;               /* Soft orange sidebar */
+  --life-chat-bg: #FDFFB6;                  /* Pale yellow chat */
+  --life-members-bg: #BDE0FE;               /* Light blue member list */
+  --life-footer-bg: #FFAFCC;                /* Pink footer debug */
+
+  /* 🌾 Typography + Effects */
+  --life-font: "Nunito", "Segoe UI", sans-serif;
+  --life-background-blur: 8px;
+  --life-shadow-soft: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* === 🌾 ABSOLUTE OVERLAY BACKGROUND (always visible) === */
-#life-overlay {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background: var(--base-color) var(--background-image, none) center/cover no-repeat;
-  background-attachment: fixed;
-  opacity: 1;
-  pointer-events: none;
+/* === 🌿 Base Background + Variables === */
+.theme-dark, .theme-light, #app-mount {
+  --background-primary: var(--life-base-color) !important;
+  --background-secondary: var(--life-base-color) !important;
+  --background-tertiary: var(--life-base-color) !important;
+  --background-floating: var(--life-base-color) !important;
+  --text-normal: var(--life-text) !important;
+  --font-primary: var(--life-font) !important;
 }
+
+/* === 🌾 Global Base === */
+body, #app-mount, [class*="appMount"], [class*="bg_"], [class*="layer_"] {
+  background: var(--life-base-color) center/cover no-repeat fixed !important;
+  color: var(--life-text) !important;
+  font-family: var(--life-font) !important;
+}
+
+/* === 🖼️ Overlay === */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: var(--base-color) var(--background-image, none) center/cover no-repeat;
-  background-attachment: fixed;
-  opacity: 1;
-}
-
-/* === 🌸 GENERAL BACKGROUND === */
-body, #app-mount {
-  color: var(--text-color) !important;
-  font-family: var(--font-family) !important;
-  backdrop-filter: blur(var(--background-blur)) !important;
-}
-
-/* === 🍃 PANELS (chat, sidebar, members list) === */
-.container-2cd8Mz,
-.sidebar-3K3Z4C,
-.chat-2ZfjoI,
-.membersWrap-3NUR2t {
-  background-color: rgba(255,255,255,var(--chat-bg-opacity)) !important;
-  border-radius: 22px !important;
-  margin: 12px !important;
-  padding: 10px !important;
-  border: var(--debug-border) !important;
-  backdrop-filter: blur(var(--background-blur)) !important;
-  background-image: var(--flower-border-image, none);
-  background-repeat: repeat;
-  background-size: 250px;
-  background-blend-mode: soft-light;
-}
-
-/* === 🌻 TEXT AND LINKS === */
-.messageContent-2t3eCI,
-.markup-eYLPri,
-.textArea-2CLwUE {
-  color: var(--text-color) !important;
-}
-.markup-eYLPri a {
-  color: var(--link-color) !important;
-  text-decoration: none;
-  font-weight: 600;
-}
-.markup-eYLPri a:hover {
-  color: var(--accent-strong) !important;
-  text-decoration: underline;
-}
-
-/* === 🌼 BUTTONS === */
-.button-38aScr, .lookFilled-yCfaCM, .buttonColor-3bP3fX {
-  background-color: var(--accent-strong) !important;
-  color: #fff !important;
-  border-radius: 12px !important;
-  transition: 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-.button-38aScr:hover, .lookFilled-yCfaCM:hover, .buttonColor-3bP3fX:hover {
-  background-color: var(--accent-color) !important;
-}
-
-/* === 🌱 SCROLLBAR === */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--accent-strong) !important;
-  border-radius: 10px;
-  border: 2px solid rgba(255,255,255,0.6);
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--accent-color) !important;
-}
-
-/* === 🌞 DEBUG VISUALS === */
-.header-2RyJ0Y,
-.container-1zzFcN {
-  background-color: rgba(255,255,255,0.7) !important;
-  border-bottom: var(--debug-border) !important;
-}
-.guilds-2JjMmN {
-  background-color: rgba(164,199,111,0.4) !important;
-  border: var(--debug-border) !important;
-  border-radius: 20px !important;
-}
-
-/* === ✨ TRANSITIONS === */
-* {
-  transition: all 0.25s ease-in-out;
-}
-
-/* === 🌄 UNIVERSAL BACKDROP FIX === */
-#app-mount::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: rgb(173, 164, 137); /* ← your warm backdrop colour */
-  background-attachment: fixed;
+  background: var(--life-base-color);
   opacity: 1;
   pointer-events: none;
 }
 
-/* Debug border so you can see if it’s active */
-#app-mount {
-  outline: 4px dashed rgba(255, 0, 0, 0.3); /* temporary debug outline */
+/* === 🧭 Header Bars (guild header, title, search area) === */
+[class*="header_"], [class*="title_"], [class*="searchBar_"] {
+  background-color: var(--life-header-bg) !important;
+  border-bottom: 2px solid var(--life-accent-strong) !important;
 }
 
-
-/* === OVERRIDE DISCORD INTERNAL BACKGROUND === */
-.bg-1QIAus,
-.appMount-3lHmkl,
-.layers-OrUESM,
-.container-2cd8Mz {
-  background: rgb(173, 164, 137) !important;
-  background-color: rgb(173, 164, 137) !important;
-  opacity: 1 !important;
+/* === 📁 Sidebar (channels, servers, etc.) === */
+[class*="sidebar_"], [class*="guilds_"], [class*="panels_"] {
+  background-color: var(--life-sidebar-bg) !important;
+  border-radius: 14px !important;
+  margin: 6px;
+  box-shadow: var(--life-shadow-soft);
 }
 
+/* === 💬 Chat Area === */
+[class*="chat_"], [class*="content_"], [class*="messages_"], [class*="scrollableContainer_"] {
+  background-color: var(--life-chat-bg) !important;
+  border-radius: 16px;
+  border: 2px solid rgba(0,0,0,0.1);
+  margin: 6px;
+}
 
+/* === 👥 Members List === */
+[class*="membersWrap_"], [class*="member_"], [class*="members_"] {
+  background-color: var(--life-members-bg) !important;
+  border-radius: 16px !important;
+  border: 2px solid rgba(0,0,0,0.1);
+  margin: 6px;
+}
 
+/* === 💡 Footer / Typing Area === */
+[class*="form_"], [class*="channelTextArea_"], [class*="textArea_"] {
+  background-color: var(--life-footer-bg) !important;
+  border-radius: 10px;
+  border: 2px dashed var(--life-accent-strong);
+}
+
+/* === 🔘 Buttons === */
+.button-38aScr, .lookFilled-yCfaCM, .buttonColor-3bP3fX {
+  background-color: var(--life-accent-strong) !important;
+  color: #fff !important;
+  border-radius: 10px;
+  transition: 0.2s ease;
+  box-shadow: var(--life-shadow-soft);
+}
+.button-38aScr:hover, .lookFilled-yCfaCM:hover, .buttonColor-3bP3fX:hover {
+  background-color: var(--life-accent) !important;
+}
+
+/* === 🔗 Links + Text === */
+.markup-eYLPri a {
+  color: var(--life-link) !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+.markup-eYLPri a:hover {
+  color: var(--life-accent-strong) !important;
+  text-decoration: underline;
+}
+
+/* === 🌱 Scrollbars === */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb {
+  background-color: var(--life-accent-strong);
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--life-accent);
+}
+
+/* === ✨ Transitions === */
+* { transition: all 0.25s ease-in-out; }

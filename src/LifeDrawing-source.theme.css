@@ -67,18 +67,12 @@ body {
   outline: 3px dashed rgba(0,120,255,0.6) !important; /* bright blue outline to confirm load */
 }
 
-/* =========================
-   EXTRA: direct class rules for your client (non-brittle + specific)
-   You discovered these names earlier — keep them in so it definitely
-   catches the root / bg / chat in your build.
-   ========================= */
-
-.appMount__51fd7,
-[class*="appMount"],
-[class*="app_"],
-.bg__960e4,
+/* Robust class-based overrides (these survive Discord updates) */
+[class^="appMount_"],
+[class^="bg_"],
+[class^="chat_"],
+[class*="appMount_"],
 [class*="bg_"],
-.chat_f75fb0,
 [class*="chat_"] {
   background: var(--life-base) !important;
   background-color: var(--life-base) !important;

@@ -2,7 +2,7 @@
  * @name LifeDrawing Theme
  * @author Savvyyy
  * @version 1.3
- * @description A painterly, natural BetterDiscord theme with layered fallbacks, balanced transparency, and easy customization.
+ * @description A painterly, natural BetterDiscord theme template.
  * @website https://savvyyybbb.github.io/Life_Drawing_Discord_Theme/
  * @source https://github.com/savvyyybbb/Life_Drawing_Discord_Theme
  * @invite betterdiscord
@@ -14,27 +14,26 @@
 
 :root {
   /* 🌿 Core Palette */
-  --life-bg-color: #2b2e29;
-  --life-accent: #a6b9a2;
-  --life-accent-strong: #b9c9b5;
-  --life-text-color: #e0ddd3;
-  --life-muted-text: #9b988e;
+  --life-bg-color: #dfe5db;
+  --life-accent: #a8bfa4;
+  --life-accent-strong: #8fa67f;
+  --life-text-color: #3b3b35;
+  --life-muted-text: #6f6a63;
 
   /* 🌸 Painterly Backdrop */
   --life-background: url("https://your-image-url-here.png");
-  --life-background-blur: 6px;
-  --life-background-brightness: 0.9;
+  --life-background-blur: 8px;
+  --life-background-brightness: 0.95;
   --life-background-saturation: 1.05;
 
-  /* 🎨 UI Containers */
-  --life-header-bg: rgba(70, 75, 67, 0.6);
-  --life-sidebar-bg: rgba(52, 56, 49, 0.7);
-  --life-chat-bg: rgba(44, 47, 44, 0.7);
-  --life-members-bg: rgba(48, 51, 46, 0.6);
-  --life-container-bg: rgba(40, 42, 38, 0.7);
+  /* 🎨 UI Accents */
+  --life-header-bg: rgba(214, 220, 200, 0.45);
+  --life-sidebar-bg: rgba(210, 217, 203, 0.35);
+  --life-chat-bg: rgba(232, 236, 225, 0.3);
+  --life-members-bg: rgba(221, 228, 214, 0.3);
 
   /* 🪵 Scrollbars */
-  --life-scrollbar: rgba(130, 140, 120, 0.4);
+  --life-scrollbar: rgba(100, 110, 95, 0.55);
 
   /* ✍️ Fonts */
   --life-font-primary: "Nunito", "Segoe UI", sans-serif;
@@ -51,26 +50,28 @@
     saturate(var(--life-background-saturation));
 }
 
-/* Prevent inner layers from overwriting base background */
+/* Prevent the core app background from being painted over */
 #app-mount,
 #app-mount > div {
   background-color: transparent !important;
   background-image: none !important;
 }
 
+/* Make Discord’s internal layers transparent */
 .appMount__51fd7,
 .app__160d8,
 #app-mount .bg__960e4 {
   background-color: transparent !important;
 }
 
+/* Transparency mode override */
 .bd-transparency,
 .bd-transparency #app-mount {
   background: transparent !important;
 }
 
 /* ============================================================
-   🧭 3. MAIN REGIONS
+   🧩 3. MAIN REGIONS
    ============================================================ */
 
 /* Server list */
@@ -78,29 +79,52 @@
   background: var(--life-accent) !important;
 }
 
-/* Sidebar / Channel list */
-[class*="sidebar"], [class*="sidebar_"] {
+/* Sidebar (general handling) */
+[class*="sidebar_"]:not(.sidebar_c48ade) {
   background: var(--life-sidebar-bg) !important;
 }
 
-/* Chat content */
-[class*="chatContent"], [class*="chatContent_"],
-[class*="chat"], [class*="chat_"] {
+/* Chat area */
+[class*="chatContent_"],
+[class*="chat_"] {
   background: var(--life-chat-bg) !important;
 }
 
 /* Members list */
-[class*="membersWrap"], [class*="membersWrap_"] {
+[class*="membersWrap_"] {
   background: var(--life-members-bg) !important;
 }
 
-/* Title bar */
-[class*="title"], [class*="title_"] {
+/* Title / header bars */
+[class*="title_"] {
   background: var(--life-header-bg) !important;
 }
 
 /* ============================================================
-   🪶 4. CHAT AND TEXT
+   🧱 3.5 SIDEBAR FIX & FUTURE PROOFING
+   ============================================================ */
+/*
+This specifically handles sidebar_c48ade and similar variants.
+Approx. size: 260px width × full height.
+*/
+
+[class*="sidebar_c48ade"],
+[class*="sidebar_c4"],
+[class*="sidebar_"] {
+  background-color: var(--life-sidebar-bg) !important;
+  backdrop-filter: blur(6px) brightness(0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--life-text-color);
+}
+
+/* Inner scroll areas */
+[class*="sidebar_c48ade"] [class*="scroller_"],
+[class*="sidebar_c48ade"] [class*="container_"] {
+  background-color: rgba(50, 53, 48, 0.6) !important;
+}
+
+/* ============================================================
+   💬 4. CHAT AND TEXT
    ============================================================ */
 
 .messageContent {
@@ -115,7 +139,7 @@ h1, h2, h3, h4, h5 {
 
 /* Mentions */
 [class*="mentioned"] {
-  background-color: rgba(156, 177, 127, 0.2);
+  background-color: rgba(156, 177, 127, 0.25);
   border-left: 3px solid var(--life-accent);
   border-radius: 5px;
   padding-left: 5px;
@@ -132,9 +156,35 @@ a:hover {
 }
 
 /* ============================================================
-   🪵 5. SCROLLBARS
+   🖋️ 5. MESSAGE BOX (input area)
+   ============================================================ */
+/* Approx. height: 48px, width: full chat width */
+
+[class*="channelTextArea_"],
+[class*="form_"] {
+  background-color: rgba(60, 65, 55, 0.4) !important;
+  border-radius: 10px;
+  margin: 8px;
+  backdrop-filter: blur(5px) brightness(0.95);
+}
+
+/* ============================================================
+   🧍 6. ACTIVITY / USER PANEL
+   ============================================================ */
+/* Approx. height: 60–80px at bottom left */
+
+[class*="panels_"],
+[class*="container_"] [class*="panel_"] {
+  background-color: rgba(70, 75, 65, 0.4) !important;
+  backdrop-filter: blur(4px) brightness(0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================================
+   🪵 7. SCROLLBARS & CONTAINERS
    ============================================================ */
 
+/* Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -143,84 +193,45 @@ a:hover {
   border-radius: 8px;
 }
 
-/* ============================================================
-   💬 6. MESSAGE BOX / INPUT AREA
-   ============================================================ */
-
-/* Message input area (~900×80px) */
-[class*="form_"], [class*="channelTextArea_"] {
-  background: rgba(50, 53, 48, 0.7) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Typing indicator */
-[class*="typing_"] {
-  background: transparent !important;
-  color: var(--life-muted-text);
-}
-
-/* ============================================================
-   🎨 7. ACTIVITY & CONTAINERS
-   ============================================================ */
-
-/* Activity Pane (~300×600px) */
-[class*="nowPlayingColumn_"], [class*="activityPanel_"], [class*="container_"] {
-  background: var(--life-container-bg) !important;
-}
-
-/* ============================================================
-   🪄 8. CONTENT REGION FIX (Balanced Transparency)
-   ============================================================ */
-
+/* Container surfaces (for lists, settings panes, etc.) */
 [class*="contentRegion_"],
 [class*="contentArea_"],
-[class*="contentWrapper_"],
-[class*="chatContent_"],
-[class*="page_"],
-[class*="layer_"]:not(#app-mount):not(html):not(body),
-[class*="container_"]:not(#app-mount):not(html):not(body) {
-  background-color: rgba(44, 47, 42, 0.55) !important;
+[class*="layer_"]:not(#app-mount),
+[class*="container_"]:not(#app-mount) {
+  background-color: rgba(44, 47, 42, 0.45) !important;
   backdrop-filter: blur(4px) brightness(0.95);
-  color: var(--life-text-color) !important;
+  color: var(--life-text-color);
 }
-
-/* Settings & configuration views */
-[class*="standardSidebarView_"],
-[class*="settings_"],
-[class*="contentColumn_"],
-[class*="contentRegionScroller_"] {
-  background-color: rgba(36, 39, 35, 0.8) !important;
-  backdrop-filter: blur(5px);
-  color: var(--life-text-color) !important;
-}
-
-/* Content inside modals and popouts */
-[class*="modal_"] [class*="content_"],
-[class*="popout_"] [class*="content_"] {
-  background-color: rgba(38, 41, 36, 0.9) !important;
-  border-radius: 10px;
-  border: 1px solid rgba(120, 130, 120, 0.3);
-}
-
-
 
 /* ============================================================
-   🧱 10. GLOBAL COLOR FALLBACKS
+   🩵 8. FALLBACK CATCH-ALL SAFETY NET
    ============================================================ */
+/*
+This ensures any unthemed new UI blocks don’t show harsh black or white
+areas. Adds a faint tint while preserving transparency.
+*/
 
-:root, .theme-dark, .theme-light {
-  --background-primary: var(--life-bg-color, #1a1c1a) !important;
-  --background-secondary: var(--life-container-bg, #2a2d29) !important;
-  --background-tertiary: var(--life-container-bg, #2a2d29) !important;
-  --background-floating: var(--life-container-bg, #2a2d29) !important;
-  --background-modifier-hover: rgba(255, 255, 255, 0.05) !important;
-  --background-modifier-active: rgba(255, 255, 255, 0.08) !important;
-  --text-normal: var(--life-text-color, #d8d5ca) !important;
-  --text-muted: var(--life-muted-text, #9b988e) !important;
+body:not(#app-mount),
+#app-mount *:not(#app-mount):not(html):not(body) {
+  background-color: transparent;
 }
 
-/* Ultimate safeguard for missed nodes */
-#app-mount * {
-  color: var(--text-normal, var(--life-text-color)) !important;
-  background-color: transparent !important;
+[class*="container_"]:not(#app-mount):not(html):not(body),
+[class*="content_"]:not(#app-mount):not(html):not(body) {
+  background-color: rgba(44, 47, 42, 0.35) !important;
+  backdrop-filter: blur(3px) brightness(0.95);
 }
+
+/* ============================================================
+   ✨ 9. DEBUG MODE (optional visual aid)
+   ============================================================ */
+/*
+Toggle this on for layout mapping. Uncomment `.debug-borders`
+to see region outlines.
+*/
+
+/*
+.debug-borders {
+  outline: 1px dashed rgba(255, 255, 255, 0.15);
+}
+*/

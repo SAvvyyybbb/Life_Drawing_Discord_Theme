@@ -1,141 +1,98 @@
-/* === Life Drawing Source Theme ===
- * Painterly + Warm Natural Edition
- * Inspired by sketchbooks, parchment, and sage-toned gardens.
- * Author: SAvvyyybbb
+/**
+ * @name Life Drawing Source Theme (Debug Edition)
+ * @description Bright painterly test version to confirm theme loading.
+ * @author SAvvyyybbb
+ * @version 1.1
  */
 
-/* === 🌿 VARIABLES === */
-:root {
-  --painterly-bg: url("https://i.imgur.com/5jWGPTg.png"); /* Replace with your own background */
-  --painterly-floral: url("https://i.imgur.com/5jWGPTg.png"); /* Subtle floral texture if desired */
-
-  --base-color: rgb(173, 164, 137);        /* parchment-sage beige */
-  --accent-color: #bfc9a4;                 /* soft moss */
-  --accent-strong: #9eac7a;                /* earthy olive */
-  --highlight-color: #d4c06b;              /* sunlight gold */
-  --text-color: #2f2b24;                   /* deep ink brown */
-  --link-color: #b6aa5b;                   /* muted gold link */
-  --hover-bg: rgba(191, 201, 164, 0.25);
-  --chat-bg-opacity: 0.78;
+/* === CORE VARIABLES === */
+.theme-dark, .theme-light {
+  --base-color: rgb(216, 204, 173);        /* parchment tan */
+  --accent-color: #a4c76f;                 /* leafy green */
+  --accent-strong: #e8b447;                /* warm yellow-gold */
+  --text-color: #2e281a;                   /* rich brown */
+  --link-color: #d38c1f;                   /* golden link tone */
+  --hover-bg: rgba(232, 180, 71, 0.3);
   --font-family: "Nunito", "Segoe UI", sans-serif;
-  --shadow-soft: 0 4px 10px rgba(47, 43, 36, 0.15);
-  --background-blur: 8px;
+  --background-blur: 10px;
+  --chat-bg-opacity: 0.85;
+  --debug-border: 3px solid var(--accent-strong);
 }
 
-/* === 🍃 ABSOLUTE BACKGROUND OVERLAY (bypasses Discord’s theme layer) === */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: var(--base-color) var(--painterly-bg) center/cover no-repeat;
-  background-attachment: fixed;
-  opacity: 1;
-  pointer-events: none;
+/* === BODY BACKGROUND === */
+body, #app-mount {
+  background: var(--base-color) var(--background-image, none) center/cover no-repeat fixed !important;
+  color: var(--text-color) !important;
+  font-family: var(--font-family) !important;
+  backdrop-filter: blur(var(--background-blur)) !important;
 }
 
-/* === 🌼 PANELS AND LAYOUT === */
+/* === MAJOR PANELS (chat, sidebar, members list) === */
 .container-2cd8Mz,
 .sidebar-3K3Z4C,
 .chat-2ZfjoI,
-.membersWrap-3NUR2t,
-.guilds-2JjMmN,
-.guilds-2W0PG8 {
-  background-color: rgba(255, 255, 255, var(--chat-bg-opacity)) !important;
-  backdrop-filter: blur(var(--background-blur)) !important;
+.membersWrap-3NUR2t {
+  background-color: rgba(255,255,255,var(--chat-bg-opacity)) !important;
   border-radius: 22px !important;
-  margin: 10px !important;
+  margin: 12px !important;
   padding: 10px !important;
-  border: 2px solid rgba(184, 182, 153, 0.35);
-  background-image: var(--painterly-floral);
-  background-size: 300px;
+  border: var(--debug-border) !important;
+  backdrop-filter: blur(var(--background-blur)) !important;
+  background-image: var(--flower-border-image, none);
   background-repeat: repeat;
+  background-size: 250px;
   background-blend-mode: soft-light;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.container-2cd8Mz:hover,
-.sidebar-3K3Z4C:hover,
-.chat-2ZfjoI:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(47, 43, 36, 0.25);
 }
 
-/* === 🌿 TEXT AND LINKS === */
+/* === TEXT AND LINKS === */
 .messageContent-2t3eCI,
 .markup-eYLPri,
 .textArea-2CLwUE {
   color: var(--text-color) !important;
-  font-family: var(--font-family) !important;
 }
 .markup-eYLPri a {
   color: var(--link-color) !important;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s ease;
 }
 .markup-eYLPri a:hover {
-  text-decoration: underline;
   color: var(--accent-strong) !important;
+  text-decoration: underline;
 }
 
-/* === 🌸 SCROLLBARS === */
+/* === BUTTONS === */
+.button-38aScr, .lookFilled-yCfaCM, .buttonColor-3bP3fX {
+  background-color: var(--accent-strong) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  transition: 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.button-38aScr:hover, .lookFilled-yCfaCM:hover, .buttonColor-3bP3fX:hover {
+  background-color: var(--accent-color) !important;
+}
+
+/* === SCROLLBAR === */
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--accent-strong) !important;
   border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(255,255,255,0.6);
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--accent-color) !important;
 }
 
-/* === 🌾 BUTTONS AND INTERACTIVE ELEMENTS === */
-.button-38aScr, 
-.lookFilled-yCfaCM, 
-.buttonColor-3bP3fX {
-  background-color: var(--accent-strong) !important;
-  color: #fff !important;
-  border-radius: 12px !important;
-  box-shadow: var(--shadow-soft);
-  transition: all 0.25s ease;
-}
-.button-38aScr:hover, 
-.lookFilled-yCfaCM:hover, 
-.buttonColor-3bP3fX:hover {
-  background-color: var(--highlight-color) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 0 10px rgba(212, 192, 107, 0.5);
-}
-
-/* === 🌻 SEARCH AND INPUTS === */
-.title-31SJ6t,
-.searchBar-zdmu7v,
-.searchBarComponent-3N7dCG {
-  background-color: rgba(255, 255, 255, 0.65) !important;
-  backdrop-filter: blur(6px);
-  border-radius: 10px;
-  border: 1px solid rgba(184, 182, 153, 0.3);
-}
-
-/* === 🌞 HEADERS === */
-.header-2RyJ0Y, 
+/* === DEBUG VISUALS === */
+.header-2RyJ0Y,
 .container-1zzFcN {
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  border-bottom: 2px solid rgba(191, 201, 164, 0.3);
-  box-shadow: 0 2px 6px rgba(47, 43, 36, 0.1);
+  background-color: rgba(255,255,255,0.7) !important;
+  border-bottom: var(--debug-border) !important;
 }
-
-/* === ✨ MENTIONS === */
-.mentioned-xhSam7 {
-  background-color: var(--hover-bg) !important;
-  border-left: 3px solid var(--accent-strong);
-  border-radius: 10px;
-}
-
-/* === 🌱 TRANSITIONS === */
-* {
-  transition: all 0.25s ease-in-out;
+.guilds-2JjMmN {
+  background-color: rgba(164,199,111,0.4) !important;
+  border: var(--debug-border) !important;
+  border-radius: 20px !important;
 }

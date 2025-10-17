@@ -122,6 +122,32 @@ Approx. size: 260px width × full height.
 [class*="sidebar_c48ade"] [class*="container_"] {
   background-color: rgba(50, 53, 48, 0.6) !important;
 }
+/* ============================================================
+   🌫️ 3.6. PSEUDO-ELEMENT CLEANUP
+   ============================================================ */
+/*
+Discord sometimes uses ::before and ::after overlays for shadows,
+separators, or layered effects. This ensures they don’t paint
+opaque blacks or greys that block the painterly background.
+*/
+
+[class*="sidebar_c48ade"]::before,
+[class*="sidebar_c48ade"]::after,
+[class*="chat_"]::before,
+[class*="chat_"]::after,
+[class*="content_"]::before,
+[class*="content_"]::after,
+[class*="container_"]::before,
+[class*="container_"]::after,
+[class*="membersWrap_"]::before,
+[class*="membersWrap_"]::after,
+[class*="layer_"]::before,
+[class*="layer_"]::after {
+  background: transparent !important;
+  content: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
 
 /* ============================================================
    💬 4. CHAT AND TEXT

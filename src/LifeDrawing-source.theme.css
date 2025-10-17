@@ -228,8 +228,4 @@ This fallback only applies to small UI fragments that lack a defined background.
 It prevents black or white gaps without covering major areas.
 */
 
-#app-mount *:not(img):not(video):not([class*="chat"]):not([class*="sidebar"]):not([class*="guilds"]):not([class*="members"]):not([class*="title"]) {
-  background-color: var(--life-container-fallback) !important;
-  /* slight transparency to blend naturally */
-  background-color: rgba(225, 223, 215, 0.5) !important;
-}
+

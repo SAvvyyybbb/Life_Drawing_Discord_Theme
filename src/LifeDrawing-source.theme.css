@@ -65,3 +65,27 @@ body {
 * {
   transition: all 0.25s ease-in-out;
 }
+/* === 🌸 GLOBAL SCROLLBARS === */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#app-mount::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+#app-mount::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background-color: #ffcc33 !important; /* bright yellow */
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+#app-mount::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #ffaa00 !important; /* darker yellow hover */
+}
+

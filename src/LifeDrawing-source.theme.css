@@ -39,7 +39,7 @@ colors, backgrounds, fonts, and general brightness.
   --life-sidebar-bg: rgba(236, 232, 220, 1); /* server/channel sidebar */
   --life-chat-bg: rgba(245, 242, 233, 1); /* chat area where messages appear */
   --life-members-bg: rgba(232, 230, 223, 1); /* right-hand member list */
-  --life-container-fallback: rgba(230, 228, 220, 1); /* backup color for untouched areas */
+  --life-container-fallback: rgba(230, 228, 220, 0); /* backup color for untouched areas */
 
   /* 🪵 Scrollbars */
   --life-scrollbar: rgba(130, 150, 130, 1); /* scrollbar thumb color */
@@ -65,6 +65,7 @@ Controls the global Discord background and its treatment (image, blur, brightnes
 /* Make Discord’s base layers transparent so your image shows through */
 .appMount__51fd7,
 .app__160d8,
+.debug-borders,
 #app-mount .bg__960e4 {
   background-color: transparent !important;
 }

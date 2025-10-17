@@ -1,57 +1,67 @@
-/* ==========================================================
-   🌿 LIFE DRAWING THEME — UNIVERSAL BACKDROP SYSTEM
-   Inspired by Discord+ handling for background layering
-   ========================================================== */
+/**
+ * @name Life Drawing Source Theme (Stable Wildcards)
+ * @description Painterly warm test version with overlay background + yellow scrollbar.
+ * @author SAvvyyybbb
+ * @version 1.3
+ */
 
-/* === 1. Base app container background === */
-#app-mount {
-  background: rgb(173, 164, 137) var(--background-image, none) center/cover no-repeat !important;
-  background-attachment: fixed !important;
+/* === BASE COLORS === */
+:root {
+  --life-base: rgb(173, 164, 137);     /* warm parchment beige */
+  --life-accent: #a4c76f;              /* sage green */
+  --life-strong: #e8b447;              /* warm sunflower yellow */
+  --life-text: #2e281a;                /* rich brown text */
+  --life-blur: 10px;
 }
 
-/* === 2. Make inner wrappers transparent so the backdrop shows === */
-/* Use wildcards for resilience — these class hashes change often */
-[class*="appMount_"],
-[class*="app_"],
-[class*="bg_"],
-[class*="container_"],
-[class*="wrapper_"],
-[class*="chat_"],
-[class*="background_"],
-[class*="guilds_"],
-[class*="sidebar_"] {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-/* === 3. Body fallback color (seen under app background) === */
+/* === BACKGROUND ANCHOR === */
+#app-mount,
 body {
-  background-color: rgb(173, 164, 137) !important;
-  color: var(--text-color, #2e281a) !important;
-  font-family: var(--font-family, "Nunito", "Segoe UI", sans-serif) !important;
+  background: var(--life-base) !important;
+  color: var(--life-text);
+  font-family: "Nunito", "Segoe UI", sans-serif;
 }
 
-/* === 4. Optional: Overlay background for painterly texture === */
-/* You can later swap `none` for your own texture or photo */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: rgb(173, 164, 137) var(--background-image, none) center/cover no-repeat fixed;
-  opacity: 1;
-  pointer-events: none;
+/* === UNIVERSAL TRANSPARENCY === */
+[class*="appMount_"],
+[class*="bg_"],
+[class*="chat_"],
+[class*="sidebar_"],
+[class*="container_"],
+[class*="members_"],
+[class*="membersWrap_"] {
+  background-color: transparent !important;
+  backdrop-filter: blur(var(--life-blur)) !important;
 }
 
-/* === 5. Transparency mode compatibility === */
-.bd-transparency,
-.bd-transparency #app-mount {
-  background: transparent !important;
+/* === OPTIONAL BACKDROP IMAGE (COMMENTED OUT)
+   Uncomment this line once you add your image:
+#app-mount {
+  background: var(--life-base) url("https://your-image-url.png") center/cover no-repeat fixed !important;
+}
+*/
+
+/* === TEXT COLOR OVERRIDES === */
+[class*="markup_"],
+[class*="messageContent_"],
+[class*="textArea_"] {
+  color: var(--life-text) !important;
 }
 
-/* === 6. Debug: distinct colors for quick testing === */
-/* (You can remove these once you confirm things are applying) */
-[class*="chat_"]      { outline: 3px solid blue !important; }
-[class*="sidebar_"]   { outline: 3px solid green !important; }
-[class*="container_"] { outline: 3px solid red !important; }
-[class*="appMount_"]  { outline: 3px solid orange !important; }
+/* === SCROLLBAR (🌻 bright yellow test) === */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--life-strong) !important; /* sunflower yellow */
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--life-accent) !important;
+}
+
+/* === TRANSITIONS === */
+* {
+  transition: all 0.25s ease-in-out;
+}

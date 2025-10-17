@@ -42,7 +42,7 @@ colors, backgrounds, fonts, and general brightness.
   --life-container-fallback: rgba(230, 228, 220, 1); /* backup color for untouched areas */
 
   /* 🪵 Scrollbars */
-  --life-scrollbar: rgba(130, 150, 130, 0.4); /* scrollbar thumb color */
+  --life-scrollbar: rgba(130, 150, 130, 1); /* scrollbar thumb color */
 
   /* ✍️ Fonts */
   --life-font-primary: "Nunito", "Segoe UI", sans-serif;

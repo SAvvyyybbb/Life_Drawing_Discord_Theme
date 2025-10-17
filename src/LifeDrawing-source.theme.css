@@ -1,77 +1,73 @@
 /**
- * @name Life Drawing Source Theme (Color Debug)
- * @description Testing color scopes using wildcards.
+ * @name Life Drawing Source Theme (Base Color Test)
+ * @description Forces full background color overlay that always shows.
  * @author SAvvyyybbb
- * @version 1.4
+ * @version 1.5
  */
 
-/* 🌿 Universal backdrop */
+/* === 🌿 VARIABLES === */
+:root {
+  --ld-base-color: rgb(173, 164, 137); /* warm beige */
+  --ld-sidebar-color: rgba(160, 200, 150, 0.7);
+  --ld-chat-color: rgba(190, 170, 220, 0.7);
+  --ld-header-color: rgba(255, 200, 120, 0.7);
+  --ld-members-color: rgba(150, 180, 230, 0.6);
+}
+
+/* === 🌾 ABSOLUTE BACKDROP OVERLAY === */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: rgb(173,164,137); /* Base beige */
+  background: var(--ld-base-color);
   background-attachment: fixed;
+  opacity: 1;
   pointer-events: none;
 }
 
-/* 🌾 Try catching all possible container layers */
-[class*="appMount"],
-[class*="bg"],
-[class*="layer"],
-[class*="baseLayer"],
-[class*="container"],
-[class*="wrapper"],
-[class*="content"],
-[class*="page"],
-[class*="scroller"],
-[class*="main"],
-[class*="guilds"],
-[class*="chat"],
+/* === 🌸 HIGH-LEVEL CONTAINERS === */
+html, body, #app-mount {
+  background: transparent !important;
+}
+
+/* === 🌻 COLOR TEST BLOCKS === */
 [class*="sidebar"],
+[class*="guilds"],
+[class*="channels"] {
+  background-color: var(--ld-sidebar-color) !important;
+  backdrop-filter: blur(8px);
+}
+
+[class*="chat"],
+[class*="messages"],
+[class*="content"] {
+  background-color: var(--ld-chat-color) !important;
+  backdrop-filter: blur(8px);
+}
+
+[class*="header"],
+[class*="toolbar"],
+[class*="title"] {
+  background-color: var(--ld-header-color) !important;
+}
+
 [class*="members"],
-[class*="panels"],
-[class*="background"],
-[class*="bgLayer"] {
-  background-color: rgba(173, 164, 137, 0.8) !important;
-  backdrop-filter: blur(8px) !important;
-  color: #2f2b24 !important;
+[class*="memberList"] {
+  background-color: var(--ld-members-color) !important;
 }
 
-/* 🟢 Sidebar areas */
-[class*="sidebar"] {
-  background-color: rgba(160, 200, 150, 0.6) !important;
-}
-
-/* 🟣 Chat areas */
-[class*="chat"] {
-  background-color: rgba(190, 170, 220, 0.5) !important;
-}
-
-/* 🔵 Member list */
-[class*="members"] {
-  background-color: rgba(150, 180, 230, 0.5) !important;
-}
-
-/* 🟠 Header and toolbar */
-[class*="header"], [class*="toolbar"], [class*="title"], [class*="container-1zzFcN"] {
-  background-color: rgba(255, 200, 120, 0.6) !important;
-}
-
-/* 🟡 Server list */
-[class*="guilds"] {
-  background-color: rgba(250, 220, 140, 0.6) !important;
-}
-
-/* ✨ Scrollbars for visibility */
+/* === 🌸 SCROLLBAR === */
 ::-webkit-scrollbar-thumb {
   background-color: #ff7a7a !important;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
-/* 🌸 Optional: custom background image (uncomment and edit)
+/* === 🌼 OPTIONAL IMAGE BACKDROP === */
+/*
 body::before {
-  background: rgb(173,164,137) url("https://your-image-here.png") center/cover no-repeat fixed;
+  background: var(--ld-base-color)
+    url("https://your-background-image.png")
+    center/cover no-repeat fixed;
 }
 */

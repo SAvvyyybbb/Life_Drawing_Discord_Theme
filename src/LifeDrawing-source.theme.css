@@ -1,8 +1,8 @@
 /**
  * @name LifeDrawing Theme
  * @author Savvyyy
- * @version 1.2
- * @description A painterly, natural BetterDiscord theme with layered fallbacks and universal coverage.
+ * @version 1.3
+ * @description A painterly, natural BetterDiscord theme with layered fallbacks, balanced transparency, and easy customization.
  * @website https://savvyyybbb.github.io/Life_Drawing_Discord_Theme/
  * @source https://github.com/savvyyybbb/Life_Drawing_Discord_Theme
  * @invite betterdiscord
@@ -14,11 +14,11 @@
 
 :root {
   /* 🌿 Core Palette */
-  --life-bg-color: #2d302c;
-  --life-accent: #a2b79c;
+  --life-bg-color: #2b2e29;
+  --life-accent: #a6b9a2;
   --life-accent-strong: #b9c9b5;
-  --life-text-color: #d9d6ca;
-  --life-muted-text: #999689;
+  --life-text-color: #e0ddd3;
+  --life-muted-text: #9b988e;
 
   /* 🌸 Painterly Backdrop */
   --life-background: url("https://your-image-url-here.png");
@@ -29,12 +29,12 @@
   /* 🎨 UI Containers */
   --life-header-bg: rgba(70, 75, 67, 0.6);
   --life-sidebar-bg: rgba(52, 56, 49, 0.7);
-  --life-chat-bg: rgba(44, 47, 44, 0.8);
+  --life-chat-bg: rgba(44, 47, 44, 0.7);
   --life-members-bg: rgba(48, 51, 46, 0.6);
-  --life-container-bg: rgba(40, 42, 38, 0.8);
+  --life-container-bg: rgba(40, 42, 38, 0.7);
 
   /* 🪵 Scrollbars */
-  --life-scrollbar: rgba(130, 140, 120, 0.5);
+  --life-scrollbar: rgba(130, 140, 120, 0.4);
 
   /* ✍️ Fonts */
   --life-font-primary: "Nunito", "Segoe UI", sans-serif;
@@ -49,6 +49,13 @@
   background: var(--life-bg-color) var(--life-background) center/cover no-repeat fixed !important;
   filter: brightness(var(--life-background-brightness))
     saturate(var(--life-background-saturation));
+}
+
+/* Prevent inner layers from overwriting base background */
+#app-mount,
+#app-mount > div {
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 .appMount__51fd7,
@@ -140,9 +147,9 @@ a:hover {
    💬 6. MESSAGE BOX / INPUT AREA
    ============================================================ */
 
-/* Message input area (approx 900x80px) */
+/* Message input area (~900×80px) */
 [class*="form_"], [class*="channelTextArea_"] {
-  background: rgba(50, 53, 48, 0.8) !important;
+  background: rgba(50, 53, 48, 0.7) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -156,49 +163,51 @@ a:hover {
    🎨 7. ACTIVITY & CONTAINERS
    ============================================================ */
 
-/* Activity Pane (approx 300x600px) */
+/* Activity Pane (~300×600px) */
 [class*="nowPlayingColumn_"], [class*="activityPanel_"], [class*="container_"] {
   background: var(--life-container-bg) !important;
 }
 
-/* Containers and overlays */
-[class*="layer_"], [class*="wrapper_"], [class*="content_"], [class*="root_"] {
-  background: var(--life-container-bg) !important;
-}
-
 /* ============================================================
-   🌿 8. OPTIONAL DEBUG VIEW
+   🪄 8. CONTENT REGION FIX (Balanced Transparency)
    ============================================================ */
 
-.debug-borders {
-  outline: 1px dashed rgba(0, 0, 0, 0.15);
-}
-
-/* ============================================================
-   🧭 9. COLOR CONTAINERS & SUB-UI
-   ============================================================ */
-
-/* Popouts, modals, context menus, etc. */
-[class*="popout_"], [class*="modal_"], [class*="menu_"], [class*="tooltip_"] {
-  background-color: var(--life-container-bg) !important;
+[class*="contentRegion_"],
+[class*="contentArea_"],
+[class*="contentWrapper_"],
+[class*="chatContent_"],
+[class*="page_"],
+[class*="layer_"]:not(#app-mount):not(html):not(body),
+[class*="container_"]:not(#app-mount):not(html):not(body) {
+  background-color: rgba(44, 47, 42, 0.55) !important;
+  backdrop-filter: blur(4px) brightness(0.95);
   color: var(--life-text-color) !important;
-  backdrop-filter: blur(6px);
+}
+
+/* Settings & configuration views */
+[class*="standardSidebarView_"],
+[class*="settings_"],
+[class*="contentColumn_"],
+[class*="contentRegionScroller_"] {
+  background-color: rgba(36, 39, 35, 0.8) !important;
+  backdrop-filter: blur(5px);
+  color: var(--life-text-color) !important;
+}
+
+/* Content inside modals and popouts */
+[class*="modal_"] [class*="content_"],
+[class*="popout_"] [class*="content_"] {
+  background-color: rgba(38, 41, 36, 0.9) !important;
+  border-radius: 10px;
+  border: 1px solid rgba(120, 130, 120, 0.3);
 }
 
 /* ============================================================
-   🌒 10. UNIVERSAL FALLBACK / “CATCH-ALL” LAYER THEMING
+   🌒 9. UNIVERSAL FALLBACK / “CATCH-ALL”
    ============================================================ */
 
 body,
-[class*="container_"],
-[class*="layer_"],
-[class*="wrapper_"],
-[class*="content_"],
 [class*="scroller_"],
-[class*="page_"],
-[class*="main_"],
-[class*="base_"],
-[class*="background_"],
 [class*="overlay_"],
 [class*="modal_"],
 [class*="menu_"],
@@ -208,7 +217,7 @@ body,
   backdrop-filter: blur(6px) brightness(0.9);
 }
 
-/* Context menus, modals, popouts */
+/* Context menus & popouts */
 [class*="menu_"],
 [class*="modal_"],
 [class*="contextMenu_"],
@@ -229,45 +238,7 @@ body,
 }
 
 /* ============================================================
-   🪄 10.5 CONTENT & REGION FIX (Balanced Transparency)
-   ============================================================ */
-
-/* Core content containers — semi-transparent overlay instead of full paint */
-[class*="content_"],
-[class*="contentRegion_"],
-[class*="contentWrapper_"],
-[class*="contentArea_"],
-[class*="chatContent_"],
-[class*="page_"],
-[class*="container_"],
-[class*="layer_"] {
-  background-color: rgba(44, 47, 42, 0.55) !important;
-  backdrop-filter: blur(4px) brightness(0.95);
-  color: var(--life-text-color) !important;
-  transition: background-color 0.3s ease;
-}
-
-/* Settings & configuration views — slightly darker to separate from backdrop */
-[class*="standardSidebarView_"],
-[class*="settings_"],
-[class*="contentColumn_"],
-[class*="contentRegionScroller_"] {
-  background-color: rgba(36, 39, 35, 0.8) !important;
-  backdrop-filter: blur(5px);
-  color: var(--life-text-color) !important;
-}
-
-/* Content inside modals and popouts */
-[class*="modal_"] [class*="content_"],
-[class*="popout_"] [class*="content_"] {
-  background-color: rgba(38, 41, 36, 0.9) !important;
-  border-radius: 10px;
-  border: 1px solid rgba(120, 130, 120, 0.3);
-}
-
-
-/* ============================================================
-   🧱 11. GLOBAL COLOR FALLBACKS (ENSURES NO BLACK HOLES)
+   🧱 10. GLOBAL COLOR FALLBACKS
    ============================================================ */
 
 :root, .theme-dark, .theme-light {
@@ -281,8 +252,8 @@ body,
   --text-muted: var(--life-muted-text, #9b988e) !important;
 }
 
-/* Universal fallback for any unstyled node */
+/* Ultimate safeguard for missed nodes */
 #app-mount * {
-  background-color: var(--background-primary, var(--life-bg-color)) !important;
   color: var(--text-normal, var(--life-text-color)) !important;
+  background-color: transparent !important;
 }

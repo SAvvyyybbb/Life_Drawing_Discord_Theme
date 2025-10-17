@@ -75,7 +75,8 @@ Use deeper greens and browns for a cozy feel.
    ============================================================ */
 
 #app-mount {
-  background: var(--life-bg-color) var(--life-background) center/cover no-repeat fixed !important;
+  background: var(--life-background) center/cover no-repeat fixed !important;
+  background-color: transparent !important;
   filter: brightness(var(--life-background-brightness))
           saturate(var(--life-background-saturation));
 }

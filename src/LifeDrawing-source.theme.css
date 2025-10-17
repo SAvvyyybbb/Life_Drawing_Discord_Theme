@@ -1,11 +1,10 @@
 /**
  * @name LifeDrawing Theme
  * @author Savvyyy
- * @version 1.4
- * @description A painterly, natural BetterDiscord theme template.
+ * @version 1.5
+ * @description A painterly, natural BetterDiscord theme template with warm, muted tones and layered transparency.
  * @website https://savvyyybbb.github.io/Life_Drawing_Discord_Theme/
  * @source https://github.com/savvyyybbb/Life_Drawing_Discord_Theme
- * @invite betterdiscord
  */
 
 /* ============================================================
@@ -13,27 +12,28 @@
    ============================================================ */
 
 :root {
-  /* 🌿 Core Palette */
-  --life-bg-color: #dfe5db;
-  --life-accent: #a8bfa4;
-  --life-accent-strong: #8fa67f;
-  --life-text-color: #3b3b35;
-  --life-muted-text: #6f6a63;
+  /* 🎨 Core Palette (muted warm greens / browns) */
+  --life-bg-color: #e8e5dc;
+  --life-accent: #b7c8b5;
+  --life-accent-strong: #93a687;
+  --life-text-color: #3e3a32;
+  --life-muted-text: #726f66;
 
   /* 🌸 Painterly Backdrop */
   --life-background: url("https://your-image-url-here.png");
   --life-background-blur: 8px;
-  --life-background-brightness: 0.95;
+  --life-background-brightness: 1;
   --life-background-saturation: 1.05;
 
-  /* 🎨 UI Accents */
-  --life-header-bg: rgba(214, 220, 200, 0.45);
-  --life-sidebar-bg: rgba(210, 217, 203, 0.35);
-  --life-chat-bg: rgba(232, 236, 225, 0.3);
-  --life-members-bg: rgba(221, 228, 214, 0.3);
+  /* 🌄 Containers */
+  --life-header-bg: rgba(231, 224, 198, 0.7);
+  --life-sidebar-bg: rgba(236, 232, 220, 0.7);
+  --life-chat-bg: rgba(245, 242, 233, 0.7);
+  --life-members-bg: rgba(232, 230, 223, 0.7);
+  --life-container-fallback: rgba(230, 228, 220, 0.9);
 
   /* 🪵 Scrollbars */
-  --life-scrollbar: rgba(100, 110, 95, 0.55);
+  --life-scrollbar: rgba(130, 150, 130, 0.4);
 
   /* ✍️ Fonts */
   --life-font-primary: "Nunito", "Segoe UI", sans-serif;
@@ -47,17 +47,9 @@
 #app-mount {
   background: var(--life-bg-color) var(--life-background) center/cover no-repeat fixed !important;
   filter: brightness(var(--life-background-brightness))
-    saturate(var(--life-background-saturation));
+          saturate(var(--life-background-saturation));
 }
 
-/* Prevent the core app background from being painted over */
-#app-mount,
-#app-mount > div {
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-/* Make Discord’s internal layers transparent */
 .appMount__51fd7,
 .app__160d8,
 #app-mount .bg__960e4 {
@@ -71,87 +63,50 @@
 }
 
 /* ============================================================
-   🧩 3. MAIN REGIONS
+   🧱 3. CONTAINERS & LAYOUT
    ============================================================ */
 
-/* Server list */
+/* Server List */
 [class*="guilds"], [class*="guilds_"] {
   background: var(--life-accent) !important;
 }
 
-/* Sidebar (general handling) */
-[class*="sidebar_"]:not(.sidebar_c48ade) {
+/* Sidebar */
+[class*="sidebar"], [class*="sidebar_"], [class*="sidebar_c48ade"] {
   background: var(--life-sidebar-bg) !important;
 }
 
-/* Chat area */
-[class*="chatContent_"],
-[class*="chat_"] {
+/* Chat */
+[class*="chatContent"], [class*="chatContent_"],
+[class*="chat"], [class*="chat_"],
+[class*="content_"], [class*="content"] {
   background: var(--life-chat-bg) !important;
 }
 
-/* Members list */
-[class*="membersWrap_"] {
+/* Members List */
+[class*="membersWrap"], [class*="membersWrap_"] {
   background: var(--life-members-bg) !important;
 }
 
-/* Title / header bars */
-[class*="title_"] {
+/* Header / Title Bar */
+[class*="title"], [class*="title_"] {
   background: var(--life-header-bg) !important;
 }
 
 /* ============================================================
-   🧱 3.5 SIDEBAR FIX & FUTURE PROOFING
+   🪵 4. SCROLLBARS
    ============================================================ */
-/*
-This specifically handles sidebar_c48ade and similar variants.
-Approx. size: 260px width × full height.
-*/
 
-[class*="sidebar_c48ade"],
-[class*="sidebar_c4"],
-[class*="sidebar_"] {
-  background-color: var(--life-sidebar-bg) !important;
-  backdrop-filter: blur(6px) brightness(0.95);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--life-text-color);
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-/* Inner scroll areas */
-[class*="sidebar_c48ade"] [class*="scroller_"],
-[class*="sidebar_c48ade"] [class*="container_"] {
-  background-color: rgba(50, 53, 48, 0.6) !important;
+::-webkit-scrollbar-thumb {
+  background: var(--life-scrollbar);
+  border-radius: 8px;
 }
 
 /* ============================================================
-   🌫️ 3.6. PSEUDO-ELEMENT CLEANUP
-   ============================================================ */
-/*
-Discord sometimes uses ::before and ::after overlays for shadows,
-separators, or layered effects. This ensures they don’t paint
-opaque blacks or greys that block the painterly background.
-*/
-
-[class*="sidebar_c48ade"]::before,
-[class*="sidebar_c48ade"]::after,
-[class*="chat_"]::before,
-[class*="chat_"]::after,
-[class*="content_"]::before,
-[class*="content_"]::after,
-[class*="container_"]::before,
-[class*="container_"]::after,
-[class*="membersWrap_"]::before,
-[class*="membersWrap_"]::after,
-[class*="layer_"]::before,
-[class*="layer_"]::after {
-  background: transparent !important;
-  content: none !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
-/* ============================================================
-   💬 4. CHAT AND TEXT
+   💬 5. CHAT & TEXT
    ============================================================ */
 
 .messageContent {
@@ -166,7 +121,7 @@ h1, h2, h3, h4, h5 {
 
 /* Mentions */
 [class*="mentioned"] {
-  background-color: rgba(156, 177, 127, 0.25);
+  background-color: rgba(147, 166, 135, 0.25);
   border-left: 3px solid var(--life-accent);
   border-radius: 5px;
   padding-left: 5px;
@@ -183,78 +138,62 @@ a:hover {
 }
 
 /* ============================================================
-   🖋️ 5. MESSAGE BOX (input area)
+   🧰 6. ELEMENT DEBUG VIEW (optional)
    ============================================================ */
-/* Approx. height: 48px, width: full chat width */
-
-[class*="channelTextArea_"],
-[class*="form_"] {
-  background-color: rgba(60, 65, 55, 0.4) !important;
-  border-radius: 10px;
-  margin: 8px;
-  backdrop-filter: blur(5px) brightness(0.95);
-}
-
-/* ============================================================
-   🧍 6. ACTIVITY / USER PANEL
-   ============================================================ */
-/* Approx. height: 60–80px at bottom left */
-
-[class*="panels_"],
-[class*="container_"] [class*="panel_"] {
-  background-color: rgba(70, 75, 65, 0.4) !important;
-  backdrop-filter: blur(4px) brightness(0.9);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* ============================================================
-   🪵 7. SCROLLBARS & CONTAINERS
-   ============================================================ */
-
-/* Scrollbars */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--life-scrollbar);
-  border-radius: 8px;
-}
-
-/* Container surfaces (for lists, settings panes, etc.) */
-[class*="contentRegion_"],
-[class*="contentArea_"],
-[class*="layer_"]:not(#app-mount),
-[class*="container_"]:not(#app-mount) {
-  background-color: rgba(44, 47, 42, 0.45) !important;
-  backdrop-filter: blur(4px) brightness(0.95);
-  color: var(--life-text-color);
-}
-
-/* ============================================================
-   🩵 8. FALLBACK CATCH-ALL SAFETY NET
-   ============================================================ */
-/*
-This ensures any unthemed new UI blocks don’t show harsh black or white
-areas. Adds a faint tint while preserving transparency.
-*/
-
-body:not(#app-mount),
-#app-mount *:not(#app-mount):not(html):not(body) {
-  background-color: transparent;
-}
-
-[class*="container_"]:not(#app-mount):not(html):not(body),
-[class*="content_"]:not(#app-mount):not(html):not(body) {
-  background-color: rgba(44, 47, 42, 0.35) !important;
-  backdrop-filter: blur(3px) brightness(0.95);
-}
-
-/* ============================================================
-   ✨ 9. DEBUG MODE (optional visual aid)
-   ============================================================ */
-
-/*
 .debug-borders {
-  outline: 1px dashed rgba(255, 255, 255, 0.15);
+  outline: 1px dashed rgba(0, 0, 0, 0.15);
 }
+
+/* ============================================================
+   🌫️ 7. STRONG PSEUDO-ELEMENT & OVERLAY CLEANUP
+   ============================================================ */
+/*
+Eliminates Discord’s dark overlays, ::before, ::after elements, and shadows.
+This prevents black tinting over sidebars and containers.
 */
+
+#app-mount *::before,
+#app-mount *::after {
+  background: transparent !important;
+  content: none !important;
+  opacity: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  filter: none !important;
+  pointer-events: none !important;
+}
+
+/* Remove injected backdrops & overlays */
+[class*="layer_"],
+[class*="backdrop_"],
+[class*="container_"],
+[class*="content_"],
+[class*="sidebar_"] {
+  box-shadow: none !important;
+}
+
+[class*="layer_"]::before,
+[class*="layer_"]::after,
+[class*="backdrop_"]::before,
+[class*="backdrop_"]::after,
+[class*="sidebar_"]::before,
+[class*="sidebar_"]::after,
+[class*="content_"]::before,
+[class*="content_"]::after,
+[class*="container_"]::before,
+[class*="container_"]::after {
+  background: transparent !important;
+  content: none !important;
+  opacity: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  pointer-events: none !important;
+}
+
+/* ============================================================
+   🌿 8. CATCH-ALL DEFAULT BACKGROUND
+   ============================================================ */
+
+#app-mount *:not(img):not(video) {
+  background-color: var(--life-container-fallback) !important;
+}

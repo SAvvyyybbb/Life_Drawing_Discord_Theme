@@ -121,3 +121,22 @@ body, #app-mount {
 * {
   transition: all 0.25s ease-in-out;
 }
+
+/* === LIFE DRAWING BACKDROP OVERLAY === */
+#life-drawing-overlay,
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgb(173, 164, 137); /* ← warm sage/beige base */
+  background-attachment: fixed;
+  pointer-events: none;
+}
+
+/* OPTIONAL: Add subtle paper grain texture later like this:
+body::before {
+  background: rgb(173, 164, 137) url("https://your-image-url.png") center/cover no-repeat fixed;
+}
+*/
+

@@ -142,11 +142,7 @@ body::before {
   pointer-events: none;
 }
 
-/* OPTIONAL: Add subtle paper grain texture later like this:
-body::before {
-  background: rgb(173, 164, 137) url("https://your-image-url.png") center/cover no-repeat fixed;
-}
-*/
+/* === OVERRIDE DISCORD INTERNAL BACKGROUND === */
 .bg-1QIAus,
 .appMount-3lHmkl,
 .layers-OrUESM,
@@ -155,5 +151,6 @@ body::before {
   background-color: rgb(173, 164, 137) !important;
   opacity: 1 !important;
 }
+
 
 

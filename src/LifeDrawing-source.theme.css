@@ -54,41 +54,30 @@ body {
 }
 
 /* ===============================
-   🧭 LAYOUT DEBUG COLORS
+   🧭 LAYOUT DEBUG COLORS (Fixed)
    =============================== */
 
-/* Server list (far left) */
-nav[class*="guilds"] {
-  background-color: var(--debug-serverlist) !important;
-  backdrop-filter: blur(var(--background-blur));
+.appMount-3lHmkl .guilds-2JjMmN {
+  background: var(--debug-serverlist) !important;
 }
 
-/* Channel sidebar */
-div[class*="sidebar"] {
-  background-color: var(--debug-sidebar) !important;
-  backdrop-filter: blur(var(--background-blur));
+.appMount-3lHmkl .sidebar-1tnWFu {
+  background: var(--debug-sidebar) !important;
 }
 
-/* Chat area */
-div[class*="chatContent"] {
-  background-color: var(--debug-chat) !important;
-  backdrop-filter: blur(var(--background-blur));
-  border-radius: 10px;
-  margin: 5px;
-  padding: 10px;
+.appMount-3lHmkl .chatContent-3KubbW,
+.appMount-3lHmkl .chat-2ZfjoI {
+  background: var(--debug-chat) !important;
 }
 
-/* Member list (far right) */
-div[class*="membersWrap"] {
-  background-color: var(--debug-members) !important;
-  backdrop-filter: blur(var(--background-blur));
+.appMount-3lHmkl .membersWrap-3NUR2t {
+  background: var(--debug-members) !important;
 }
 
-/* Top header / title bar */
-div[class*="title"] {
-  background-color: var(--debug-header) !important;
-  backdrop-filter: blur(var(--background-blur));
+.appMount-3lHmkl .title-31SJ6t {
+  background: var(--debug-header) !important;
 }
+
 
 /* ===============================
    ✨ INTERACTIVE ELEMENTS

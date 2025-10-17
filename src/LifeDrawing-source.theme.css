@@ -1,153 +1,57 @@
-/**
- * @name Life Drawing Source Theme (Force Backdrop)
- * @description Forces warm sage/beige backdrop + reliable overrides. Edit vars below.
- * @author SAvvyyybbb
- * @version 1.4
- */
+/* ==========================================================
+   🌿 LIFE DRAWING THEME — UNIVERSAL BACKDROP SYSTEM
+   Inspired by Discord+ handling for background layering
+   ========================================================== */
 
-/* =========================
-   CONFIG (edit these)
-   ========================= */
-
-:root,
-.theme-dark,
-.theme-light {
-  /* Change this RGB to whatever base colour you want */
-  --life-base-rgb: 173,164,137; /* rgb(173,164,137) */
-  --life-base: rgb(var(--life-base-rgb));
-  --life-base-alpha: rgba(var(--life-base-rgb),0.95);
-
-  --life-accent: #b3ca78;
-  --life-text: #2f2b24;
-  --life-font: "Nunito", "Segoe UI", sans-serif;
-
-  /* Background image placeholder (leave `none` while you prepare art) */
-  --life-background-image: none;
-  /* Example to use later:
-     --life-background-image: url("https://i.imgur.com/your-image.png");
-  */
-
-  --life-blur: 8px;
+/* === 1. Base app container background === */
+#app-mount {
+  background: rgb(173, 164, 137) var(--background-image, none) center/cover no-repeat !important;
+  background-attachment: fixed !important;
 }
 
-/* =========================
-   HIGH-PRIORITY TOKEN OVERRIDES
-   (try to beat Discord's theme tokens)
-   ========================= */
-
-.theme-dark, .theme-light, #app-mount, [class*="theme-"] {
-  --background-primary: var(--life-base) !important;
-  --background-secondary: var(--life-base) !important;
-  --background-tertiary: var(--life-base) !important;
-  --background-floating: var(--life-base-alpha) !important;
-
-  /* text / interactive tokens */
-  --text-normal: var(--life-text) !important;
-  --font-primary: var(--life-font) !important;
+/* === 2. Make inner wrappers transparent so the backdrop shows === */
+/* Use wildcards for resilience — these class hashes change often */
+[class*="appMount_"],
+[class*="app_"],
+[class*="bg_"],
+[class*="container_"],
+[class*="wrapper_"],
+[class*="chat_"],
+[class*="background_"],
+[class*="guilds_"],
+[class*="sidebar_"] {
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
-/* =========================
-   RELIABLE OVERLAY (always visible)
-   This paints a layer behind everything.
-   ========================= */
+/* === 3. Body fallback color (seen under app background) === */
+body {
+  background-color: rgb(173, 164, 137) !important;
+  color: var(--text-color, #2e281a) !important;
+  font-family: var(--font-family, "Nunito", "Segoe UI", sans-serif) !important;
+}
 
+/* === 4. Optional: Overlay background for painterly texture === */
+/* You can later swap `none` for your own texture or photo */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -9999; /* far behind UI */
-  background: var(--life-base) var(--life-background-image) center/cover no-repeat fixed !important;
-  background-attachment: fixed !important;
+  z-index: -1;
+  background: rgb(173, 164, 137) var(--background-image, none) center/cover no-repeat fixed;
+  opacity: 1;
   pointer-events: none;
-  opacity: 1 !important;
 }
 
-/* Debug outline — remove when confirmed */
-body {
-  outline: 3px dashed rgba(0,120,255,0.6) !important; /* bright blue outline to confirm load */
+/* === 5. Transparency mode compatibility === */
+.bd-transparency,
+.bd-transparency #app-mount {
+  background: transparent !important;
 }
 
-/* Robust class-based overrides (these survive Discord updates) */
-[class^="appMount_"],
-[class^="bg_"],
-[class^="chat_"],
-[class*="appMount_"],
-[class*="bg_"],
-[class*="chat_"] {
-  background: var(--life-base) !important;
-  background-color: var(--life-base) !important;
-  color: var(--life-text) !important;
-  backdrop-filter: blur(var(--life-blur)) !important;
-}
-
-/* =========================
-   Panels: chat, sidebar, members
-   Use these to control panel tint / opacity
-   ========================= */
-
-[class*="container_"],
-[class*="sidebar_"],
-[class*="guilds_"],
-[class*="chat_"],
-[class*="membersWrap_"],
-[class*="members_"] {
-  background-color: rgba(255,255,255,0.82) !important; /* panel tint — change for more/less parchment */
-  border-radius: 18px !important;
-  margin: 10px !important;
-  padding: 8px !important;
-  border: 1px solid rgba(0,0,0,0.06) !important;
-  backdrop-filter: blur(calc(var(--life-blur) - 2px)) !important;
-}
-
-/* =========================
-   Useful commented image examples
-   (uncomment and edit URLs when ready)
-   ========================= */
-
-/* Large full-page painterly image behind everything:
-body::before {
-  background: var(--life-base) url("https://i.imgur.com/your-painterly-bg.png") center/cover no-repeat fixed !important;
-}
-*/
-
-/* Chat-specific subtle texture:
-[class*="chat_"] {
-  background-image: url("https://i.imgur.com/your-chat-texture.png");
-  background-blend-mode: soft-light;
-  background-size: cover;
-}
-*/
-
-/* Sidebar floral border:
-[class*="sidebar_"] {
-  background-image: url("https://i.imgur.com/your-floral-border.png");
-  background-repeat: no-repeat;
-  background-position: left top;
-}
-*/
-
-/* =========================
-   Small UI extras
-   ========================= */
-
-.messageContent-2t3eCI,
-.markup-eYLPri,
-.textArea-2CLwUE {
-  color: var(--life-text) !important;
-  font-family: var(--life-font) !important;
-}
-
-/* Make scrollbars clearly visible while testing */
-::-webkit-scrollbar { width: 12px !important; }
-::-webkit-scrollbar-thumb {
-  background: #2f6fff !important; /* bright blue test scrollbar */
-  border-radius: 10px !important;
-  border: 2px solid rgba(255,255,255,0.6) !important;
-}
-
-/* Buttons */
-[class*="button_"], .button-38aScr, .lookFilled-yCfaCM {
-  background-color: var(--life-accent) !important;
-  color: white !important;
-  border-radius: 10px !important;
-}
+/* === 6. Debug: distinct colors for quick testing === */
+/* (You can remove these once you confirm things are applying) */
+[class*="chat_"]      { outline: 3px solid blue !important; }
+[class*="sidebar_"]   { outline: 3px solid green !important; }
+[class*="container_"] { outline: 3px solid red !important; }
+[class*="appMount_"]  { outline: 3px solid orange !important; }

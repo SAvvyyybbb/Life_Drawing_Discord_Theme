@@ -1,45 +1,39 @@
 /**
  * @name LifeDrawing Theme
  * @author Savvyyy
- * @version 1.7
- * @description A painterly, natural BetterDiscord theme with warm sage tones, dark/light mode support, and clear documentation for easy editing.
+ * @version 1.5
+ * @description A painterly, natural BetterDiscord theme template with warm, muted tones and layered transparency.
  * @website https://savvyyybbb.github.io/Life_Drawing_Discord_Theme/
  * @source https://github.com/savvyyybbb/Life_Drawing_Discord_Theme
  */
 
 /* ============================================================
-   🌱 1. VARIABLES — Editable theme settings
+   🌱 1. VARIABLES
    ============================================================ */
-/*
-💡 Tip: You can safely edit all variables here.
-- Replace image URLs with your artwork.
-- Adjust opacity in rgba() for transparency.
-- Tune brightness/saturation for the mood you want.
-*/
 
 :root {
-  /* 🎨 Core Palette */
-  --life-bg-color: #dcd8cf;         /* fallback parchment base */
-  --life-accent: #9fb59b;           /* muted sage */
-  --life-accent-strong: #7c947a;    /* deep moss green */
-  --life-text-color: #3c392f;       /* rich espresso brown */
-  --life-muted-text: #6e6b63;       /* stone gray */
+  /* 🎨 Core Palette (muted warm greens / browns) */
+  --life-bg-color: #e8e5dc;
+  --life-accent: #b7c8b5;
+  --life-accent-strong: #93a687;
+  --life-text-color: #3e3a32;
+  --life-muted-text: #726f66;
 
   /* 🌸 Painterly Backdrop */
   --life-background: url("https://i.imgur.com/4Dm8QdE.jpeg");
   --life-background-blur: 8px;
-  --life-background-brightness: 0.95;
+  --life-background-brightness: 1;
   --life-background-saturation: 1.05;
 
   /* 🌄 Containers */
-  --life-header-bg: rgba(224, 216, 190, 0.7);
-  --life-sidebar-bg: rgba(205, 210, 200, 0.7);
-  --life-chat-bg: rgba(240, 237, 226, 0.7);
-  --life-members-bg: rgba(218, 223, 214, 0.7);
-  --life-container-fallback: rgba(225, 223, 215, 0.85);
+  --life-header-bg: rgba(231, 224, 198, 0.7);
+  --life-sidebar-bg: rgba(236, 232, 220, 0.7);
+  --life-chat-bg: rgba(245, 242, 233, 0.7);
+  --life-members-bg: rgba(232, 230, 223, 0.7);
+  --life-container-fallback: rgba(230, 228, 220, 0.9);
 
   /* 🪵 Scrollbars */
-  --life-scrollbar: rgba(124, 148, 122, 0.6);
+  --life-scrollbar: rgba(130, 150, 130, 0.4);
 
   /* ✍️ Fonts */
   --life-font-primary: "Nunito", "Segoe UI", sans-serif;
@@ -47,36 +41,11 @@
 }
 
 /* ============================================================
-   🌘 DARK MODE OVERRIDES
-   ============================================================ */
-/*
-These only apply if Discord is in dark mode.
-Use deeper greens and browns for a cozy feel.
-*/
-
-.theme-dark {
-  --life-bg-color: #2b2b28;
-  --life-accent: #6b7d66;
-  --life-accent-strong: #a6bba1;
-  --life-text-color: #e6e3da;
-  --life-muted-text: #c7c4b8;
-
-  --life-header-bg: rgba(70, 78, 67, 0.75);
-  --life-sidebar-bg: rgba(60, 65, 58, 0.7);
-  --life-chat-bg: rgba(48, 51, 45, 0.7);
-  --life-members-bg: rgba(55, 58, 52, 0.75);
-  --life-container-fallback: rgba(50, 54, 47, 0.85);
-
-  --life-scrollbar: rgba(160, 180, 160, 0.4);
-}
-
-/* ============================================================
    🌄 2. BASE APP BACKGROUND
    ============================================================ */
 
 #app-mount {
-  background: var(--life-background) center/cover no-repeat fixed !important;
-  background-color: transparent !important;
+  background: var(--life-bg-color) var(--life-background) center/cover no-repeat fixed !important;
   filter: brightness(var(--life-background-brightness))
           saturate(var(--life-background-saturation));
 }
@@ -87,6 +56,7 @@ Use deeper greens and browns for a cozy feel.
   background-color: transparent !important;
 }
 
+/* Transparency mode override */
 .bd-transparency,
 .bd-transparency #app-mount {
   background: transparent !important;
@@ -96,34 +66,31 @@ Use deeper greens and browns for a cozy feel.
    🧱 3. CONTAINERS & LAYOUT
    ============================================================ */
 
+/* Server List */
 [class*="guilds"], [class*="guilds_"] {
   background: var(--life-accent) !important;
 }
 
+/* Sidebar */
 [class*="sidebar"], [class*="sidebar_"], [class*="sidebar_c48ade"] {
   background: var(--life-sidebar-bg) !important;
-  /* Example image overlay:
-     background: url("https://example.com/leaves.png") center/cover no-repeat,
-                 var(--life-sidebar-bg) !important;
-     🔸 Ideal drawing aspect: 1:3 (tall rectangle)
-  */
 }
 
+/* Chat */
 [class*="chatContent"], [class*="chatContent_"],
 [class*="chat"], [class*="chat_"],
 [class*="content_"], [class*="content"] {
   background: var(--life-chat-bg) !important;
-  /* Ideal drawing aspect: 16:9 (widescreen rectangle) */
 }
 
+/* Members List */
 [class*="membersWrap"], [class*="membersWrap_"] {
   background: var(--life-members-bg) !important;
-  /* Ideal drawing aspect: 1:3 (tall rectangle) */
 }
 
+/* Header / Title Bar */
 [class*="title"], [class*="title_"] {
   background: var(--life-header-bg) !important;
-  /* Ideal drawing aspect: full-width strip, 1920x100px */
 }
 
 /* ============================================================
@@ -135,11 +102,7 @@ Use deeper greens and browns for a cozy feel.
 }
 ::-webkit-scrollbar-thumb {
   background: var(--life-scrollbar);
-  border-radius: 10px;
-  border: 2px solid rgba(255,255,255,0.2);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(124, 148, 122, 0.8);
+  border-radius: 8px;
 }
 
 /* ============================================================
@@ -156,13 +119,15 @@ h1, h2, h3, h4, h5 {
   color: var(--life-accent-strong);
 }
 
+/* Mentions */
 [class*="mentioned"] {
-  background-color: rgba(124, 148, 122, 0.15);
-  border-left: 3px solid var(--life-accent-strong);
+  background-color: rgba(147, 166, 135, 0.25);
+  border-left: 3px solid var(--life-accent);
   border-radius: 5px;
   padding-left: 5px;
 }
 
+/* Links */
 a {
   color: var(--life-accent-strong);
   transition: 0.2s ease;
@@ -173,16 +138,19 @@ a:hover {
 }
 
 /* ============================================================
-   🧰 6. DEBUG VIEW
+   🧰 6. ELEMENT DEBUG VIEW (optional)
    ============================================================ */
-
 .debug-borders {
   outline: 1px dashed rgba(0, 0, 0, 0.15);
 }
 
 /* ============================================================
-   🌫️ 7. PSEUDO-ELEMENT CLEANUP
+   🌫️ 7. STRONG PSEUDO-ELEMENT & OVERLAY CLEANUP
    ============================================================ */
+/*
+Eliminates Discord’s dark overlays, ::before, ::after elements, and shadows.
+This prevents black tinting over sidebars and containers.
+*/
 
 #app-mount *::before,
 #app-mount *::after {
@@ -195,6 +163,7 @@ a:hover {
   pointer-events: none !important;
 }
 
+/* Remove injected backdrops & overlays */
 [class*="layer_"],
 [class*="backdrop_"],
 [class*="container_"],
@@ -222,34 +191,9 @@ a:hover {
 }
 
 /* ============================================================
-   🌿 8. SMART FALLBACK (FINAL FIX)
+   🌿 8. CATCH-ALL DEFAULT BACKGROUND
    ============================================================ */
-/*
-This only fills small interface fragments (like buttons, form fields,
-dividers) that don't already have a background.
-It leaves chat, sidebar, and major panels untouched.
-*/
 
-#app-mount :is(button, input, textarea, .scrollableContainer__*, .divider*, .form*) {
+#app-mount *:not(img):not(video) {
   background-color: var(--life-container-fallback) !important;
-  backdrop-filter: blur(2px);
-  border-radius: 6px;
 }
-
-/* Keep all major panels transparent */
-[class*="chat_"],
-[class*="sidebar_"],
-[class*="guilds_"],
-[class*="members_"],
-[class*="title_"],
-[class*="content_"],
-[class*="layer_"],
-[class*="container_"],
-#app-mount,
-.appMount__51fd7,
-.app__160d8,
-#app-mount .bg__960e4 {
-  background-color: transparent !important;
-}
-
-

@@ -1,29 +1,37 @@
 /**
- * @name LifeDrawing Theme — Layout Map Edition
- * @description Dark, modular BetterDiscord theme with labeled sections.
- * Each section uses unique colors and includes example image-backdrop code.
+ * @name LifeDrawing Theme — Modular Template
+ * @description Dark painterly BetterDiscord base with clear, editable structure.
  */
 
 /* ============================================================
-   🪴 SECTION 1 — CORE VARIABLES
+   🪴 1. CORE VARIABLES
    ============================================================ */
 
 :root {
-  /* --- Overall mood: darker base so blocks stand apart --- */
+  /* Palette */
   --life-bg-color: #1e201f;
   --life-accent: #465f46;
   --life-accent-strong: #5b7b5a;
   --life-text-color: #e5e3dc;
   --life-muted-text: #aaa59a;
 
+  /* Scrollbar + Containers */
   --life-scrollbar: rgba(100, 120, 100, 0.6);
+  --life-scrollbar-hover: rgba(150, 170, 150, 0.8);
+  --life-container-bg: rgba(35, 37, 34, 0.85);
+  --life-container-border: rgba(90, 110, 90, 0.4);
 
+  /* Fonts */
   --life-font-primary: "Nunito", "Segoe UI", sans-serif;
   --life-font-heading: "Poppins", "Nunito", sans-serif;
+
+  /* Frosted-glass toggle values */
+  --life-glass-blur: 10px;
+  --life-glass-opacity: 0.7;
 }
 
 /* ============================================================
-   ☀️ SECTION 2 — THEME VARIABLE MAPPING
+   ☀️ 2. THEME VARIABLE MAPPING
    ============================================================ */
 
 .theme-dark, :root.theme-dark {
@@ -38,85 +46,110 @@
 }
 
 /* ============================================================
-   🌄 SECTION 3 — GLOBAL BACKGROUND
+   🌄 3. GLOBAL BACKGROUND
    ============================================================ */
 
 #app-mount {
   background: var(--life-bg-color) url("https://your-global-bg.png") center/cover no-repeat fixed !important;
-  /* draw full-screen background: ~16:9 aspect ratio */
+  filter: brightness(0.9) saturate(1.05);
 }
 
 /* ============================================================
-   🧱 SECTION 4 — LAYOUT PANELS
+   🧱 4. LAYOUT PANELS (visual map)
    ============================================================ */
 
-/* --- 4.1 SERVER LIST (far left) ---
-   Approx. aspect ratio: very tall, ~1 : 2.3
-   Suggested art size: 150 × 350 px tileable texture */
-#app-mount [class*="guilds_"],
-#app-mount [class*="guilds"] {
-  background: #2e2f28 url("https://example.com/serverlist-bg.png") center/cover no-repeat !important;
+/* --- 4.1 SERVER LIST --- */
+#app-mount [class*="guilds_"], #app-mount [class*="guilds"] {
+  background: #2e2f28 !important;
 }
 
-/* --- 4.2 CHANNEL SIDEBAR ---
-   Ratio: tall, ~1 : 1.8
-   Suggested art size: 280 × 500 px */
-#app-mount [class*="sidebar_"],
-#app-mount [class*="sidebar"] {
-  background: #222420 url("https://example.com/sidebar-bg.png") center/cover no-repeat !important;
+/* --- 4.2 SIDEBAR --- */
+#app-mount [class*="sidebar_"], #app-mount [class*="sidebar"] {
+  background: #242724 !important;
 }
 
-/* --- 4.3 CHAT AREA ---
-   Ratio: wide, ~16 : 9 for typical 1080p window
-   Suggested art size: 1600 × 900 px */
-#app-mount [class*="chatContent_"],
-#app-mount [class*="chatContent"] {
-  background: #252825 url("https://example.com/chat-bg.png") center/cover no-repeat !important;
+/* --- 4.3 CHAT AREA --- */
+#app-mount [class*="chatContent_"], #app-mount [class*="chatContent"] {
+  background: #262a26 !important;
 }
 
-/* --- 4.4 MEMBER LIST (right side) ---
-   Ratio: tall, ~1 : 2
-   Suggested art size: 260 × 500 px */
-#app-mount [class*="membersWrap_"],
-#app-mount [class*="membersWrap"] {
-  background: #1b1d1a url("https://example.com/members-bg.png") center/cover no-repeat !important;
+/* --- 4.4 MEMBER LIST --- */
+#app-mount [class*="membersWrap_"], #app-mount [class*="membersWrap"] {
+  background: #1c1e1c !important;
 }
 
-/* --- 4.5 TITLE / HEADER BAR ---
-   Ratio: wide strip, ~8 : 1
-   Suggested art size: 1600 × 200 px */
-#app-mount [class*="title_"],
-#app-mount [class*="title"] {
-  background: #33352f url("https://example.com/header-bg.png") center/cover no-repeat !important;
+/* --- 4.5 TITLE / HEADER --- */
+#app-mount [class*="title_"], #app-mount [class*="title"] {
+  background: #33352f !important;
 }
 
-/* --- 4.6 ACTIVITY / STATUS PANE (Home > Activity) ---
-   Ratio: squareish, ~1 : 1
-   Suggested art size: 500 × 500 px */
-#app-mount [class*="activityPanel_"],
-#app-mount [class*="activityPanel"] {
-  background: #2d302a url("https://example.com/activity-bg.png") center/cover no-repeat !important;
-}
-
-/* --- 4.7 MESSAGE INPUT BOX ---
-   Ratio: full-width strip, ~6 : 1
-   Suggested art size: 1200 × 200 px */
-#app-mount [class*="channelTextArea_"],
-#app-mount [class*="channelTextArea"] {
-  background: #191b18 url("https://example.com/messagebox-bg.png") center/cover no-repeat !important;
-}
-
-/* --- 4.8 SCROLLBAR AREA (applies to all scroll containers) --- */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--life-scrollbar);
-  border-radius: 8px;
+/* --- 4.6 MESSAGE BOX --- */
+#app-mount [class*="channelTextArea_"], #app-mount [class*="channelTextArea"] {
+  background: #191b18 !important;
 }
 
 /* ============================================================
-   💬 SECTION 5 — TEXT, LINKS, AND MENTIONS
+   🌫️ 5. FROSTED GLASS TOGGLES
+   ============================================================ */
+
+/* Example: Add .frosted class to apply blur/opacity globally */
+.frosted #app-mount [class*="chatContent_"],
+.frosted #app-mount [class*="sidebar_"],
+.frosted #app-mount [class*="membersWrap_"] {
+  backdrop-filter: blur(var(--life-glass-blur)) brightness(1.1);
+  background: rgba(30, 32, 31, var(--life-glass-opacity)) !important;
+}
+
+/* ============================================================
+   🧩 6. CONTAINERS (modals, popouts, cards, tooltips)
+   ============================================================ */
+
+/* Main card-style containers */
+[class*="container_"], [class*="contentRegion_"], [class*="settings_"] {
+  background: var(--life-container-bg) !important;
+  border: 1px solid var(--life-container-border) !important;
+  border-radius: 10px !important;
+}
+
+/* Popouts, context menus */
+[class*="popout_"], [class*="menu_"], [class*="tooltip_"], [class*="modal_"] {
+  background: var(--life-container-bg) !important;
+  backdrop-filter: blur(calc(var(--life-glass-blur) / 2));
+  border: 1px solid var(--life-container-border) !important;
+}
+
+/* User popout cards */
+[class*="userPopout_"], [class*="userProfileModalInner_"] {
+  background: var(--life-container-bg) !important;
+  border: 1px solid var(--life-container-border);
+  backdrop-filter: blur(calc(var(--life-glass-blur) / 1.5));
+}
+
+/* ============================================================
+   🪵 7. SCROLLBARS (Global)
+   ============================================================ */
+
+/* Default webkit scrollbar (applies to all scrollable content) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--life-scrollbar) !important;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--life-scrollbar-hover) !important;
+}
+
+/* Discord’s internal scrollbar containers */
+[class*="scrollable_"], [class*="scroller_"] {
+  scrollbar-color: var(--life-scrollbar) transparent !important;
+  scrollbar-width: thin !important;
+}
+
+/* ============================================================
+   💬 8. TEXT, LINKS, MENTIONS
    ============================================================ */
 
 .messageContent {
@@ -143,7 +176,7 @@ a:hover {
 }
 
 /* ============================================================
-   🔧 SECTION 6 — DEBUG OVERLAY
+   🧭 9. DEBUG VIEW
    ============================================================ */
 :root.debug * {
   outline: 1px dashed rgba(255, 255, 255, 0.2);

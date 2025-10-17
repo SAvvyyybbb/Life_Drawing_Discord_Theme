@@ -1,11 +1,11 @@
 /**
  * @name Life Drawing Source Theme (Debug Edition)
- * @description Bright painterly test version to confirm theme loading.
+ * @description Painterly warm test version with overlay background.
  * @author SAvvyyybbb
- * @version 1.1
+ * @version 1.2
  */
 
-/* === CORE VARIABLES === */
+/* === 🌿 VARIABLES === */
 .theme-dark, .theme-light {
   --base-color: rgb(216, 204, 173);        /* parchment tan */
   --accent-color: #a4c76f;                 /* leafy green */
@@ -19,15 +19,35 @@
   --debug-border: 3px solid var(--accent-strong);
 }
 
-/* === BODY BACKGROUND === */
+/* === 🌾 ABSOLUTE OVERLAY BACKGROUND (always visible) === */
+#life-overlay {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--base-color) var(--background-image, none) center/cover no-repeat;
+  background-attachment: fixed;
+  opacity: 1;
+  pointer-events: none;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--base-color) var(--background-image, none) center/cover no-repeat;
+  background-attachment: fixed;
+  opacity: 1;
+}
+
+/* === 🌸 GENERAL BACKGROUND === */
 body, #app-mount {
-  background: var(--base-color) var(--background-image, none) center/cover no-repeat fixed !important;
   color: var(--text-color) !important;
   font-family: var(--font-family) !important;
   backdrop-filter: blur(var(--background-blur)) !important;
 }
 
-/* === MAJOR PANELS (chat, sidebar, members list) === */
+/* === 🍃 PANELS (chat, sidebar, members list) === */
 .container-2cd8Mz,
 .sidebar-3K3Z4C,
 .chat-2ZfjoI,
@@ -44,7 +64,7 @@ body, #app-mount {
   background-blend-mode: soft-light;
 }
 
-/* === TEXT AND LINKS === */
+/* === 🌻 TEXT AND LINKS === */
 .messageContent-2t3eCI,
 .markup-eYLPri,
 .textArea-2CLwUE {
@@ -60,7 +80,7 @@ body, #app-mount {
   text-decoration: underline;
 }
 
-/* === BUTTONS === */
+/* === 🌼 BUTTONS === */
 .button-38aScr, .lookFilled-yCfaCM, .buttonColor-3bP3fX {
   background-color: var(--accent-strong) !important;
   color: #fff !important;
@@ -72,7 +92,7 @@ body, #app-mount {
   background-color: var(--accent-color) !important;
 }
 
-/* === SCROLLBAR === */
+/* === 🌱 SCROLLBAR === */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -85,7 +105,7 @@ body, #app-mount {
   background-color: var(--accent-color) !important;
 }
 
-/* === DEBUG VISUALS === */
+/* === 🌞 DEBUG VISUALS === */
 .header-2RyJ0Y,
 .container-1zzFcN {
   background-color: rgba(255,255,255,0.7) !important;
@@ -95,4 +115,9 @@ body, #app-mount {
   background-color: rgba(164,199,111,0.4) !important;
   border: var(--debug-border) !important;
   border-radius: 20px !important;
+}
+
+/* === ✨ TRANSITIONS === */
+* {
+  transition: all 0.25s ease-in-out;
 }

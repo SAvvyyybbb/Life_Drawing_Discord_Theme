@@ -202,40 +202,7 @@ a:hover {
   border: 1px solid rgba(120, 130, 120, 0.3);
 }
 
-/* ============================================================
-   🌒 9. UNIVERSAL FALLBACK / “CATCH-ALL”
-   ============================================================ */
 
-body,
-[class*="scroller_"],
-[class*="overlay_"],
-[class*="modal_"],
-[class*="menu_"],
-[class*="tooltip_"] {
-  background-color: rgba(28, 31, 26, 0.85) !important;
-  color: var(--life-text-color) !important;
-  backdrop-filter: blur(6px) brightness(0.9);
-}
-
-/* Context menus & popouts */
-[class*="menu_"],
-[class*="modal_"],
-[class*="contextMenu_"],
-[class*="popout_"] {
-  background: rgba(40, 44, 37, 0.9) !important;
-  border: 1px solid rgba(150, 170, 150, 0.3);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-/* Tooltips */
-[class*="tooltip_"] {
-  background: rgba(60, 65, 58, 0.95) !important;
-  color: #e8e5da !important;
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 0.85rem;
-}
 
 /* ============================================================
    🧱 10. GLOBAL COLOR FALLBACKS

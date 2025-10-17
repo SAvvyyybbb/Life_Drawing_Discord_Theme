@@ -1,10 +1,10 @@
 /**
- * @name Life Drawing
- * @description Futzing around with themeing.
+ * @name Life Drawing Discord Theme
+ * @description Painterly warm Discord theme using overlay background.
  * @author SAvvyyybbb
- * @version 1.0
+ * @version 1.2
  * @source https://github.com/SAvvyyybbb/Life_Drawing_Discord_Theme
  * @updateUrl https://raw.githubusercontent.com/SAvvyyybbb/Life_Drawing_Discord_Theme/main/Life_Drawing_Discord_Theme.theme.css
  */
 
-@import url('https://SAvvyyybbb.github.io/Life_Drawing_Discord_Theme/src/LifeDrawing-source.theme.css');
+@import url('https://raw.githubusercontent.com/SAvvyyybbb/Life_Drawing_Discord_Theme/main/src/LifeDrawing-source.theme.css');

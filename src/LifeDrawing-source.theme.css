@@ -57,24 +57,48 @@ body {
    🧭 LAYOUT DEBUG COLORS (Fixed)
    =============================== */
 
-.appMount-3lHmkl .guilds-2JjMmN {
+./* ===============================
+   🧭 LAYOUT DEBUG COLORS (Fixed)
+   =============================== */
+
+..appMount__51fd7 .guilds-2JjMmN {
   background: var(--debug-serverlist) !important;
 }
 
-.appMount-3lHmkl .sidebar-1tnWFu {
+.appMount__51fd7 .sidebar-1tnWFu {
   background: var(--debug-sidebar) !important;
 }
 
-.appMount-3lHmkl .chatContent-3KubbW,
-.appMount-3lHmkl .chat-2ZfjoI {
+.appMount__51fd7 .chatContent-3KubbW,
+.appMount__51fd7 .chat-2ZfjoI {
   background: var(--debug-chat) !important;
 }
 
-.appMount-3lHmkl .membersWrap-3NUR2t {
+.appMount__51fd7 .membersWrap-3NUR2t {
   background: var(--debug-members) !important;
 }
 
-.appMount-3lHmkl .title-31SJ6t {
+.appMount__51fd7 .title-31SJ6t {
+  background: var(--debug-header) !important;
+}
+ .guilds-2JjMmN {
+  background: var(--debug-serverlist) !important;
+}
+
+.appMount__51fd7 .sidebar-1tnWFu {
+  background: var(--debug-sidebar) !important;
+}
+
+.appMount__51fd7 .chatContent-3KubbW,
+.appMount__51fd7 .chat-2ZfjoI {
+  background: var(--debug-chat) !important;
+}
+
+.appMount__51fd7 .membersWrap-3NUR2t {
+  background: var(--debug-members) !important;
+}
+
+.appMount__51fd7 .title-31SJ6t {
   background: var(--debug-header) !important;
 }
 

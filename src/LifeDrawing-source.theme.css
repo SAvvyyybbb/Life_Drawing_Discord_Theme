@@ -1,73 +1,94 @@
 /**
- * @name Life Drawing Source Theme (Base Color Test)
- * @description Forces full background color overlay that always shows.
+ * @name Life Drawing Source Theme (Working Background Edition)
+ * @description Painterly warm test theme with verified background overrides.
  * @author SAvvyyybbb
- * @version 1.5
+ * @version 1.3
  */
 
-/* === 🌿 VARIABLES === */
+/* === GLOBAL COLORS === */
 :root {
-  --ld-base-color: rgb(173, 164, 137); /* warm beige */
-  --ld-sidebar-color: rgba(160, 200, 150, 0.7);
-  --ld-chat-color: rgba(190, 170, 220, 0.7);
-  --ld-header-color: rgba(255, 200, 120, 0.7);
-  --ld-members-color: rgba(150, 180, 230, 0.6);
+  --base-bg: rgb(173, 164, 137);       /* Warm sage/beige base */
+  --chat-bg: rgba(255, 245, 210, 0.85); /* Chat panel tint */
+  --sidebar-bg: rgba(210, 230, 200, 0.8); /* Sidebar tint */
+  --members-bg: rgba(230, 220, 200, 0.85); /* Members list tint */
+  --header-bg: rgba(220, 200, 170, 0.9); /* Top header tint */
+  --accent: #b3ca78;                    /* Sage green accent */
+  --text-color: #2f2b24;                /* Deep brown text */
+  --font-family: "Nunito", "Segoe UI", sans-serif;
+  --blur: 8px;
 }
 
-/* === 🌾 ABSOLUTE BACKDROP OVERLAY === */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: var(--ld-base-color);
-  background-attachment: fixed;
-  opacity: 1;
-  pointer-events: none;
+/* === BASE BACKGROUND FIX === */
+body,
+[class*="appMount_"],
+[class*="bg_"],
+#app-mount {
+  background: var(--base-bg) !important;
+  color: var(--text-color) !important;
+  font-family: var(--font-family) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+
+  /* 🌸 If you want to add your own background image later, uncomment below */
+  /* background: var(--base-bg) url("https://your-image-url.png") center/cover no-repeat fixed !important; */
 }
 
-/* === 🌸 HIGH-LEVEL CONTAINERS === */
-html, body, #app-mount {
-  background: transparent !important;
+/* === CHAT AREA === */
+[class*="chat_"] {
+  background-color: var(--chat-bg) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  border-radius: 16px;
+  margin: 10px;
+  padding: 10px;
 }
 
-/* === 🌻 COLOR TEST BLOCKS === */
-[class*="sidebar"],
-[class*="guilds"],
-[class*="channels"] {
-  background-color: var(--ld-sidebar-color) !important;
-  backdrop-filter: blur(8px);
+/* === SIDEBAR (servers/channels) === */
+[class*="sidebar_"] {
+  background-color: var(--sidebar-bg) !important;
+  border-radius: 16px;
+  margin: 10px;
+  padding: 10px;
 }
 
-[class*="chat"],
-[class*="messages"],
-[class*="content"] {
-  background-color: var(--ld-chat-color) !important;
-  backdrop-filter: blur(8px);
+/* === MEMBERS LIST === */
+[class*="membersWrap_"],
+[class*="members_"] {
+  background-color: var(--members-bg) !important;
+  border-radius: 16px;
+  margin: 10px;
+  padding: 10px;
 }
 
-[class*="header"],
-[class*="toolbar"],
-[class*="title"] {
-  background-color: var(--ld-header-color) !important;
+/* === HEADER (top bar) === */
+[class*="title_"],
+[class*="header_"] {
+  background-color: var(--header-bg) !important;
+  border-bottom: 2px solid var(--accent);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-[class*="members"],
-[class*="memberList"] {
-  background-color: var(--ld-members-color) !important;
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 10px;
 }
-
-/* === 🌸 SCROLLBAR === */
 ::-webkit-scrollbar-thumb {
-  background-color: #ff7a7a !important;
-  border-radius: 8px;
+  background: var(--accent) !important;
+  border-radius: 10px;
 }
 
-/* === 🌼 OPTIONAL IMAGE BACKDROP === */
-/*
-body::before {
-  background: var(--ld-base-color)
-    url("https://your-background-image.png")
-    center/cover no-repeat fixed;
+/* === BUTTONS === */
+[class*="button_"],
+[class*="lookFilled_"],
+[class*="buttonColor_"] {
+  background-color: var(--accent) !important;
+  color: white !important;
+  border-radius: 10px;
+  transition: all 0.25s ease;
 }
-*/
+[class*="button_"]:hover {
+  filter: brightness(1.2);
+}
+
+/* === TRANSITIONS === */
+* {
+  transition: background 0.3s ease, color 0.3s ease, filter 0.3s ease;
+}
